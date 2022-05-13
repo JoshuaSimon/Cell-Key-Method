@@ -47,13 +47,33 @@ def generate_data(n, seed):
     )
 
 
-def tabulate_data(data):
+def tabulate_data(data, rollout=False):
     """
     Generates the grouped frequency table with summed record keys.
+    If the rollout option is true, all of the grouped sums are
+    calculated as well.
     """
     grouped_data = data.groupby(["university", "sex"]).agg(["count", "sum"])
     grouped_data.columns = ["count", "record_key_sum"]
     grouped_data.reset_index(inplace=True)
+
+    if rollout:
+        rollout_data = data.loc[:, data.columns != "sex"].groupby(["university"]).agg(["count", "sum"])
+        rollout_data.columns = ["count", "record_key_sum"]
+        rollout_data.reset_index(inplace=True)
+        rollout_data["sex"] = "i"
+        rollout_data = rollout_data.iloc[:, [0,3,1,2]]
+
+        sum_col = pd.DataFrame({
+            "university": ["sum"],
+            "sex": ["i"],
+            "count": [grouped_data["count"].sum()],
+            "record_key_sum": [grouped_data["record_key_sum"].sum()]
+        })
+
+        grouped_data = grouped_data.append([rollout_data, sum_col], ignore_index=True)
+        grouped_data = grouped_data.sort_values(by=["university", "sex"])
+
     return grouped_data
 
 
@@ -71,7 +91,7 @@ def get_len_of_int(value: int) -> int:
     return int(math.log10(value)) + 1
 
 
-def get_overlay_matrix_value(matrix, vector, values, record_key_sums, seed, p0=1) -> int:
+def get_overlay_matrix_value(matrix, vector, values, record_key_sums, seed, p0=1) -> list:
     """
     Returns the overlay value given by the overlay matrix and vector
     for a value-record_key_sum-pair.
