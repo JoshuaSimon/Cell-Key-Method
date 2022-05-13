@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
  
 
-# Values for the overlay matrix are taken from 
+# Values for the overlay matrix and vector are taken from 
 # "Die Cell-Key-Methode – ein Geheimhaltungsverfahren" 
 # by Jörg Höhne und Julia Höninger.
 OVERLAY_MATRIX = np.matrix([
@@ -38,7 +38,7 @@ def generate_data(n, seed):
     sex = ["m", "w"]
 
     uni_data = np.random.choice(universities, size=n, replace=True, p=[0.15, 0.3, 0.5, 0.05])
-    sex_data = np.random.choice(sex, size=n, replace=True,p=[0.5, 0.5])
+    sex_data = np.random.choice(sex, size=n, replace=True, p=[0.5, 0.5])
     record_key_data = np.random.uniform(low=0.0, high=1.0, size=n)
 
     return pd.DataFrame(
@@ -71,7 +71,7 @@ def get_len_of_int(value: int) -> int:
     return int(math.log10(value)) + 1
 
 
-def get_overlay_matrix_value(matrix, vector, value, record_key_sum) -> int:
+def get_overlay_matrix_value(matrix, vector, values, record_key_sums, seed, p0=1) -> int:
     """
     Returns the overlay value given by the overlay matrix and vector
     for a value-record_key_sum-pair.
@@ -82,39 +82,59 @@ def get_overlay_matrix_value(matrix, vector, value, record_key_sum) -> int:
     is used. In the selected row, the index of the column, where the 
     record_key_sum is bigger than the column value is then used as in index
     for the overlay vector. The selected value of this vector is the
-    overlay value which is to add to the original table value.
+    overlay value which is to add to the original table value. The probability
+    p0 determines the chance, that the overlay value is actually used.
     """
+    np.random.seed(seed)
+    overlay_col = []
     num_rows, _ = matrix.shape
 
-    if value < num_rows:
-        cell_keys = matrix[value, :]
-    else:
-        cell_keys = matrix[num_rows - 1, :]
+    for value, record_key_sum in zip(values, record_key_sums):
+        if value == 0:
+            overlay_col.append(value)
+            continue
+        elif value < num_rows:
+            cell_keys = matrix[value, :]
+        else:
+            cell_keys = matrix[num_rows - 1, :]
 
-    for index, key in enumerate(cell_keys.tolist()[0]):
-        if key > get_cell_key(record_key_sum):
-            overlay_value = vector[index]
-            break
-    else:
-        overlay_value = vector[-1]
+        for index, key in enumerate(cell_keys.tolist()[0]):
+            if key > get_cell_key(record_key_sum):
+                overlay_value = vector[index]
+                break
+        else:
+            overlay_value = vector[-1]
 
-    return overlay_value
+        overlay_value = np.random.choice([overlay_value, 0], size=1, p=[1 - p0, p0])[0]
+        overlay_col.append(overlay_value)
+
+    return overlay_col
 
 
-def apply_ckm(data, value_col_names, record_key_name):
+def apply_ckm(data, matrix, vector, value_col_names, record_key_names, seed, p) -> pd.DataFrame:
     """
+    Applys the Cell Key Method to the named columns of a data set.
+    Therefore the overlay value is calculated and added to the named
+    columns.
+    Returns a DataFrame with the overlayed data.
     """
-    pass
+    output_data = data.copy()
+    for col_name, record_key_name, p0 in zip(value_col_names, record_key_names, p):
+        output_data[col_name] = data[col_name] + get_overlay_matrix_value(matrix, vector, data[col_name], data[record_key_name], seed, p0)
+    return output_data
 
 
 if __name__ == "__main__":
-    data = generate_data(10, 42)
+    data = generate_data(1001, 42)
     table_data = tabulate_data(data)
+    overlayed_data = apply_ckm(table_data, OVERLAY_MATRIX, CHANGE_VECTOR, ["count"], ["record_key_sum"], seed=42, p=[0])
+
     #print(data)
-    #print(table_data)
+    print(table_data)
+    print(overlayed_data)
+    
     #print(get_cell_key(2.456))
     #print(get_len_of_int(1000))
-
-    get_overlay_matrix_value(OVERLAY_MATRIX, CHANGE_VECTOR, 251, 120.846)
+    #print(get_overlay_matrix_value(OVERLAY_MATRIX, CHANGE_VECTOR, 251, 120.846))
 
     print("Done.")
