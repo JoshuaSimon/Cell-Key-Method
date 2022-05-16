@@ -125,7 +125,8 @@ def get_overlay_matrix_value(matrix, vector, values, record_key_sums, seed, p0=1
         else:
             overlay_value = vector[-1]
 
-        overlay_value = np.random.choice([overlay_value, 0], size=1, p=[1 - p0, p0])[0]
+        if p0 is not None:
+            overlay_value = np.random.choice([overlay_value, 0], size=1, p=[1 - p0, p0])[0]
         overlay_col.append(overlay_value)
 
     return overlay_col
