@@ -80,6 +80,9 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amsmath} % Math env.
 \usepackage{fontawesome} % Icons for GitHub, etc.
+\usepackage{qrcode}
+\usepackage{textcomp}
+
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -355,6 +358,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}
     \frametitle{$p$\%-Regel}
+    Die Defintion der folgenden Regel kann in \cite{Rothe} gefunden werden.
     \begin{theorem}[$p$\%-Regel]
         Ein Tabellenfeld bzw. eine Zelle $c$ wird genau dann geheim gehalten, wenn die Differenz $d$ zwischen dem Zellwert $c$ und dem zweitgrößten Beitrag $x_2$ den größten Beitrag $x_1$ um weniger als $p$\% übersteigt. Es gilt also 
         \begin{align}
@@ -436,42 +440,208 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 
 \begin{frame}{}
-	\frametitle{Cell Key Methode - Algorithmus}
+	\frametitle{Cell Key Methode - Methodik I}
+    Die wichtigsten Bestandteile des Verfahrens werden in \cite{Enderle} dargestellt. Ähnlich wie in \cite{Wipke} beschreiben, lässt sich nun ein Algorithmus formulieren: 
+    \newline
+    \begin{enumerate}
+        \item \textbf{Erzeugung der Originalwerte} mit einem Auswertungs-Tool
+        \item \textbf{Cell-Key-Bestimmung} aus Zufallszahlen innerhalb des Auswertungs-Tools
+        \item \textbf{Lookup-Modul}
+        \begin{enumerate}
+            \item Auslesen der Überlagerungswerte aus der Überlagerungsmatrix
+            \item Addieren der Überlagerungswerte und Originalwerte
+        \end{enumerate}
+    \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik II}
+    \begin{figure}
+		\centering
+		\includegraphics[width=0.59\linewidth]{img/ckm_flow.png}
+		\caption{Cell Key Methode - Ablaufdiagramm}
+		\label{fig:ckm_flow}
+	\end{figure} 
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik III}
+    \textbf{1 - Erzeugung der Originalwerte mit einem Auswertungs-Tool} 
+    %\newline
+    %\newline
+    %In diesem ersten Schritt werden aus den erhobenen, plausibiliserten statistischen Daten die Veröffentlichungstabellen erstellt. Beispielhaft betrachten wir die %folgende Auswertung. Die darin enthaltenen Werte bezeichnet man als \textbf{Originalwerte}.
+    \begin{figure}
+		\centering
+		\includegraphics[width=0.2\linewidth]{img/ckm_1.png}
+        \includegraphics[width=0.25\linewidth]{img/ckm_2.png}
+        \caption{Erhobene Mikrodaten (links) und Auswertung mit Originalwerten (rechts)}
+	\end{figure} 
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik IV}
+    \textbf{2 - Cell-Key-Bestimmung aus Zufallszahlen innerhalb des Auswertungs-Tools} 
+    \begin{itemize}
+        \item Jedem Mikrodatensatz wird eine gleichverteile Zufallszahl $r$, dem sog. \textbf{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet.
+        \item Mit den Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Es ergeben sich also Summen von Record-Keys.
+        \item Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textbf{Cell-Key}.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik V}
+    \textbf{2 - Cell-Key-Bestimmung aus Zufallszahlen innerhalb das Auswertungs-Tools} 
+    \begin{figure}
+		\centering
+		\includegraphics[width=0.25\linewidth]{img/ckm_3.png}
+        \includegraphics[width=0.3\linewidth]{img/ckm_4.png}
+        \caption{Erhobene Mikrodaten mit Record-Key (links) und Auswertung mit Record-Key Summe (rechts)}
+	\end{figure} 
+    \begin{align*}
+        RecordKeySum(Wuerzburg, m) & = 0.611853 + 0.456070 + 0.785176 = 1.853099 \\
+        CellKey(Wuerzburg, m) & = 0.853099
+    \end{align*}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik VI}
+    \textbf{3.1 - Lookup-Modul:  Auslesen der Überlagerungswerte aus der Überlagerungsmatrix}
+    \begin{itemize}
+        \item Für die Bestimmung eines Überlagerungswerts dient das Paar $(Originalwert, CellKey)$ als Input.
+        \item Anhand dieses Wertepaares wird aus der Überlagerungsmatrix der zugehörige Überlagerungswerte abgelesen.
+        \item Die Überlagerungsmatrix ist die Lösung eines unterbestimmten nicht-linearen Gleichungsystems, welches aus den Verfahrensparameter und stochastischen Eigenschaften entsteht \cite{Höhne}, \cite{Enderle}.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik VII}
+    \textbf{3.1 - Lookup-Modul:  Auslesen der Überlagerungswerte aus der Überlagerungsmatrix}
+    Zu den Parametern des Verfahrens zählen \cite{Höhne}:
+    \begin{itemize}
+        \item Sollen Originalwerte $1$ und $2$ geheimgehalten werden?
+        \item Anteil $P_0$ der nicht zu überlagerenden Originalwerte
+        \item Die Maximalüberlagerung $d$
+        \item Die Standardabweichung der Überlagerungsbeiträge $s$
+    \end{itemize}
+    mit den stochastischen Eigenschaften \cite{Höhne}:
+    \begin{itemize}
+        \item Erwartungstreue $E(z) = 0$
+        \item Erhalt der Varianz $Var(z) = s^2$
+        \item Wahrscheinlichkeitsbedingung $\sum_{n=-d}^{d} P_n = 1$
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik VIII}
+    \textbf{3.1 - Lookup-Modul:  Auslesen der Überlagerungswerte aus der Überlagerungsmatrix}
+    Überlagerungsmatrix aus \cite{Höhne} mit $p_0 = 0.5$, $d = 4$, $s = 2.25$:
+    \begin{footnotesize}
+    \begin{center}
+        \begin{tabular}{ r r r r r r r r r r }
+            \textbf{Originalwert} \vline & \textbf{Cell-Key} & & & & & & & & \\ 
+            \hline
+            $0$ \vline & $0$ & $0$ & $0$ & $0$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+            $1$ \vline & $0$ & $0$ & $0$ & $0.875$ & $0.6875$ & $0.6875$ & $0.9375$ & $1$ & $1$ \\
+            $2$ \vline & $0$ & $0$ & $0.3533$ & $0.3533$ & $0.3533$ & $0.9440$ & $0.9970$ & $0.9990$ & $1$ \\
+            $3$ \vline & $0$ & $0.1620$ & $0.1620$ & $0.1620$ & $0,6620$ & $0,8560$ & $0,9970$ & $0.9990$ & $1$ \\
+            $4$ \vline & $0.0870$ & $0.0870$ & $0.0870$ & $0.1920$ & $0.6920$ & $0.8590$ & $0.9970$ & $0.9990$ & $1$ \\
+            $5$ \vline & $0$ & $0$ & $0.1450$ & $0.3270$ & $0.8270$ & $0.8590$ & $0.8930$ & $0.9490$ & $1$ \\
+            $6$ \vline & $0$ & $0.0400$ & $0.1500$ & $0.2850$ & $0.7850$ & $0.8600$ & $0.9200$ & $0.9600$ & $1$ \\
+            $\geq 7$ \vline & $0.0200$ & $0.0600$ & $0.1450$ & $0.2500$ & $0.7500$ & $0.8550$ & $0.9400$ & $0.9800$ & $1$ \\
+            \hline
+            \textbf{Überlagerungswert} \vline & $–4$ & $–3$ & $–2$ & $–1$ & $0$ & $1$ & $2$ & $3$ & $4$
+        \end{tabular}
+    \end{center}
+    \end{footnotesize}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik IX}
+    \textbf{3.1 - Lookup-Modul:  Auslesen der Überlagerungswerte aus der Überlagerungsmatrix}
+    Beispiel: Überlagerungswert für $(\textcolor{red}{Originalwert}, CellKey) = (\textcolor{red}{3}, 0.853099)$
+    \begin{footnotesize}
+    \begin{center}
+        \begin{tabular}{ r r r r r r r r r r }
+            \textbf{Originalwert} \vline & \textbf{Cell-Key} & & & & & & & & \\ 
+            \hline
+            $0$ \vline & $0$ & $0$ & $0$ & $0$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+            $1$ \vline & $0$ & $0$ & $0$ & $0.875$ & $0.6875$ & $0.6875$ & $0.9375$ & $1$ & $1$ \\
+            $2$ \vline & $0$ & $0$ & $0.3533$ & $0.3533$ & $0.3533$ & $0.9440$ & $0.9970$ & $0.9990$ & $1$ \\
+            $\textcolor{red}{3}$ \vline & $\textcolor{red}{0}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0,6620}$ & $\textcolor{red}{0,8560}$ & $\textcolor{red}{0,9970}$ & $\textcolor{red}{0.9990}$ & $\textcolor{red}{1}$ \\
+            $4$ \vline & $0.0870$ & $0.0870$ & $0.0870$ & $0.1920$ & $0.6920$ & $0.8590$ & $0.9970$ & $0.9990$ & $1$ \\
+            $5$ \vline & $0$ & $0$ & $0.1450$ & $0.3270$ & $0.8270$ & $0.8590$ & $0.8930$ & $0.9490$ & $1$ \\
+            $6$ \vline & $0$ & $0.0400$ & $0.1500$ & $0.2850$ & $0.7850$ & $0.8600$ & $0.9200$ & $0.9600$ & $1$ \\
+            $\geq 7$ \vline & $0.0200$ & $0.0600$ & $0.1450$ & $0.2500$ & $0.7500$ & $0.8550$ & $0.9400$ & $0.9800$ & $1$ \\
+            \hline
+            \textbf{Überlagerungswert} \vline & $–4$ & $–3$ & $–2$ & $–1$ & $0$ & $1$ & $2$ & $3$ & $4$
+        \end{tabular}
+    \end{center}
+    \end{footnotesize}
+    Zeile gleich \textcolor{red}{Originalwert} bestimmen.
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik X}
+    \textbf{3.1 - Lookup-Modul:  Auslesen der Überlagerungswerte aus der Überlagerungsmatrix}
+    Beispiel: Überlagerungswert für $(\textcolor{red}{Originalwert}, \textcolor{blue}{CellKey}) = (\textcolor{red}{3}, \textcolor{blue}{0.853099})$
+    \begin{footnotesize}
+    \begin{center}
+        \begin{tabular}{ r r r r r r r r r r }
+            \textbf{Originalwert} \vline & \textbf{Cell-Key} & & & & & & & & \\ 
+            \hline
+            $0$ \vline & $0$ & $0$ & $0$ & $0$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+            $1$ \vline & $0$ & $0$ & $0$ & $0.875$ & $0.6875$ & $0.6875$ & $0.9375$ & $1$ & $1$ \\
+            $2$ \vline & $0$ & $0$ & $0.3533$ & $0.3533$ & $0.3533$ & $0.9440$ & $0.9970$ & $0.9990$ & $1$ \\
+            $\textcolor{red}{3}$ \vline & $\textcolor{red}{0}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0.1620}$ & $\textcolor{red}{0,6620}$ & $\textcolor{blue}{0,8560}$ & $\textcolor{red}{0,9970}$ & $\textcolor{red}{0.9990}$ & $\textcolor{red}{1}$ \\
+            $4$ \vline & $0.0870$ & $0.0870$ & $0.0870$ & $0.1920$ & $0.6920$ & $0.8590$ & $0.9970$ & $0.9990$ & $1$ \\
+            $5$ \vline & $0$ & $0$ & $0.1450$ & $0.3270$ & $0.8270$ & $0.8590$ & $0.8930$ & $0.9490$ & $1$ \\
+            $6$ \vline & $0$ & $0.0400$ & $0.1500$ & $0.2850$ & $0.7850$ & $0.8600$ & $0.9200$ & $0.9600$ & $1$ \\
+            $\geq 7$ \vline & $0.0200$ & $0.0600$ & $0.1450$ & $0.2500$ & $0.7500$ & $0.8550$ & $0.9400$ & $0.9800$ & $1$ \\
+            \hline
+            \textbf{Überlagerungswert} \vline & $–4$ & $–3$ & $–2$ & $–1$ & $0$ & $\textcolor{blue}{1}$ & $2$ & $3$ & $4$
+        \end{tabular}
+    \end{center}
+    \end{footnotesize}
+    \textcolor{blue}{CellKey} kleiner als Spaltenwert bestimmen $\Rightarrow$ Überlagerungswert $ = \textcolor{blue}{1}$.
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Cell Key Methode - Methodik XI}
+    \textbf{3.2 - Lookup-Modul: Addieren der Überlagerungswerte und Originalwerte}
+    \begin{figure}
+        \includegraphics[width=0.7\linewidth]{img/ckm_5.png}
+        \caption{Anwendung der CKM auf die Originalwerte}
+    \end{figure}
+    Originalwerte: \textit{count}, Überlagerungswerte: \textit{overlay value}, End-Werte: \textit{new value}
 \end{frame}
 
 
 %------------------------------------------------
-\subsection{Beispiel Implementierung}
+\subsection{Probleme der CKM}
 
-%------------------------------------------------
-\subsection{Anwendung in der Hochschulstatistik}
+\begin{frame}{}
+	\frametitle{Probleme der CKM - Nicht Additivität}
+    \begin{figure}
+		\centering
+        \includegraphics[width=0.25\linewidth]{img/ckm_6.png}
+        \caption{Gegenüberstellung von überlagerten Werten mit Originalwerten}
+	\end{figure} 
+\end{frame}
 
 
 %------------------------------------------------
 \section{Fazit}
 %------------------------------------------------
-
-\begin{frame}{}
-    \frametitle{Hyperplane classifiers - A constrained optimization problem}
-    The \textbf{optimal hyperplane} can be calculated by finding the normal vector $w$ that leads to the largest margin. Thus we need to solve the optimization problem
-    \begin{equation} \label{eq:1}
-        \begin{aligned}
-            \min_{w \in \mathcal{H}, b \in \mathbb{R}} \quad & \tau (w) = \frac{1}{2} \lVert w \rVert^2 \\
-            \textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 \text{ } \forall i = {1, \dots, m}. 
-        \end{aligned}
-    \end{equation}
-    The constraints in \eqref{eq:1} ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in \cite{Schoelkopf}(Chap 7).
-\end{frame}
-
-
-\begin{frame}{}
-	\frametitle{A suitable kernel}
-	Going back to our problem of non linearly separable data, we can use a kernel function of the form
-    \begin{equation}
-        k(x, x') = \exp \left( - \frac{\left\lVert x - x' \right\rVert^2}{2 \sigma^2} \right),
-    \end{equation}
-    a so called \textbf{Gaussian radial basis function} (GRBF or RBF kernels) with $ \sigma > 0$.
-\end{frame}
 
 
 %------------------------------------------------
@@ -479,26 +649,26 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-    \frametitle{References}
+    \frametitle{Literaturverzeichnis}
     \footnotesize{
         \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-            \bibitem[Schölkopf, 2002]{Schoelkopf} Schölkopf, Bernhard, Alexander J. Smola
-            \newblock Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond. MIT press, 2002.
-
-            \bibitem[Liesen, 2015]{Liesen} Liesen, Jörg, Volker Mehrmann
-            \newblock Lineare Algebra. Wiesbaden, Germany: Springer, 2015.
-
-            \bibitem[Jarre, 2019]{Jarre} Jarre, Florian, Josef Stoer
-            \newblock Optimierung: Einführung in mathematische Theorie und Methoden. Springer-Verlag, 2019.
-
-            \bibitem[Reinhardt, 2012]{Reinhardt} Reinhardt, Rüdiger, Armin Hoffmann, Tobias Gerlach
-            \newblock Nichtlineare Optimierung: Theorie, Numerik und Experimente. Springer-Verlag, 2012.
-
             \bibitem[Bronstein, 2020]{Bronstein}  Bronstein, Ilja N., et al. 
             \newblock Taschenbuch der Mathematik. 11. Auflage, Springer-Verlag, 2020.
 
-            \bibitem[Chang, 2011]{libsvm} Chang, Chih-Chung, Chih-Jen Lin
-            \newblock LIBSVM : A library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at \url{https://www.csie.ntu.edu.tw/~cjlin/libsvm/}.
+            \bibitem[Enderle, 2019]{Enderle} Enderle, Tobias und Meike Vollmar
+            \newblock Geheimhaltung in der Hochschulstatistik. \emph{WISTA} | 6, Statistisches Bundesamt (Destatis), Wiesbaden 2019.
+
+            \bibitem[Höhne, 2019]{Höhne} Höhne, Jörg und Julia Höninger
+            \newblock Die Cell-Key-Methode – ein Geheimhaltungsverfahren. \emph{Statistische Monatshefte Niedersachsen} 1, 2019.
+
+            \bibitem[Nickl, 2019]{Nickl} Nickl, Andreas
+            \newblock Datenschutz, Geheimhaltung, Anonymisierung. Einführungsfortbildung LfStat, Fürth, 2019.
+
+            \bibitem[Rothe, 2015]{Rothe} Rothe, Patrick
+            \newblock Statistische Geheimhaltung – Der Schutz vertraulicher Daten in der amtlichen Statistik - Teil 2: Herausforderungen und aktuelle Entwicklungen. \emph{Bayern in Zahlen} 8, Bayerisches Landesamt für Statistik, München, 2015.
+
+            \bibitem[Wipke, 2018]{Wipke} Wipke, Mirko
+            \newblock Geheimhaltung im Data Warehouse - Prototypische Implementierung von automatisierter Geheimhaltung im Data Warehouse für die amtliche Hochschulstatistik in Bayern. \emph{Bayern in Zahlen} 12, Bayerisches Landesamt für Statistik, Fürth, 2018.
 
             % Example entry.
             %\bibitem[Smith, 2012]{p3} John Smith (2002)
@@ -511,7 +681,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-    \Huge{\centerline{Time for your questions!}}
+    \Huge{\centerline{Zeit für Fragen...}}
     \bigskip
     \bigskip
     \bigskip
@@ -519,8 +689,13 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
     \normalsize
     \centering
-    Follow our development on GitHub \faicon{github} 
+    Folien, \LaTeX \: und Python Code verfügbar auf GitHub \faicon{github} unter:
     \url{https://github.com/JoshuaSimon/Cell-Key-Method}
+    \newline
+    \newline
+    \qrcode{https://github.com/JoshuaSimon/Cell-Key-Method}
+
+    
     
 \end{frame}
 
