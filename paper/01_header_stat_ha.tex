@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Vorlage für Statistik-Hausarbeiten: Header %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Basics
+
+\documentclass[bibtotoc, 12pt, numbers=endperiod, openbib]{scrartcl}%
+\usepackage[a4paper, left=30mm, right=30mm, top=20mm, bottom=20mm, includefoot]{geometry}% Seitenränder
+\usepackage[utf8]{inputenc}% in TeXnicCenter bitte umändern in: \usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}%
+\usepackage[ngerman]{babel}% in englischsprachigen Arbeiten: \usepackage[english]{babel}
+\usepackage{mathptmx}%
+\usepackage{amsmath, amsfonts, amssymb}%
+\usepackage{graphicx}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Aussehen allgemein
+
+\usepackage{lmodern}% Schriftart lmodern
+\usepackage{setspace}% Zeilenabstand
+\pagenumbering{arabic}% arabische Seitenzahlen
+\setkomafont{sectioning}{\bfseries}% Serifenschrift für Überschriften
+%\usepackage[small]{titlesec}%% verkleinert die Überschriften etwas
+\usepackage[singlelinecheck=0]{caption}% linksbündige Abbildungsüberschriften
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Zitate und Literaturverzeichnis
+
+% Zitate mittels \cite[Seitenzahl]{kuerzel}
+\usepackage[noadjust]{cite}%
+\renewcommand\citeleft{}% Zeichen links vom Zitat, z.B. (, ggf. in die Klammer einfügen
+\renewcommand\citeright{}% Zeichen rechts vom Zitat, z.B. ), ggf. in die Klammer einfügen
+\renewcommand\citemid{:  }% nach der Seitenzahl folgt ": ", nach Belieben veränderbar
+
+% Literaturverzeichnis
+\makeatletter%
+\renewcommand{\@biblabel}[1]{}% Literaturverzeichnis nicht nummeriert, keine Klammern um nicht vorhandene Zahlen
+\makeatother%
+
+% URLs
+\usepackage[hyphens]{url}% URL im Literaturverzeichnis
+\urlstyle{same}% Schriftart der URL
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Häufig benötigte und nützliche Pakete
+
+% Tabellen
+\usepackage{booktabs}% Linien in Tabellen: \toprule (oben), \midrule (innerhalb der Tabelle), \bottomrule (unten)
+\usepackage{longtable}% für Tabellen mit Seitenumbruch
+\usepackage{ltxtable}% longtable und tabularx (Tabellen über mehrere Seiten, Gesamtbreite einstellbar)
+\usepackage{dcolumn}% Tabellenspalte am Dezimaltrenner ausrichten (statt l/c/r): Format D{Dezimaltrenner in Tabelle}{Dezimaltrenner, der ausgegeben werden soll}{Dezimalstellen}
+
+\usepackage{pdflscape}% Querformat ermöglichen
+\usepackage{ziffer}% kein Abstand nach Dezimaltrenner
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[section]{placeins} %prevent floats from being moved over it
+\usepackage{flafter} %used to force floats to appear after they are defined
+\usepackage{float}
+
+\usepackage{setspace}
+
+% Packages für Code.
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    %numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+% Theorems.
+\newtheorem{example}{Beispiel}
+\newtheorem{definition}{Definition}

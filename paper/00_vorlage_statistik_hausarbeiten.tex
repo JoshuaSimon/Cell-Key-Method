@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Vorlage für Statistik-Hausarbeiten: Kopfdatei %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\input{01_header_stat_ha}% Header, kann unverändert übernommen werden
+\hyphenation{}% hier nicht korrekte Wörter eingeben: Bindestrich an Trennstellen, Wörter durch Komma getrennt (keine Umlaute)
+
+\begin{document}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Titelseite
+\input{02_titelseite_stat_ha}% Angaben im Dokument ändern
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Verzeichnisse
+
+\tableofcontents% Inhaltsverzeichnis
+\newpage%
+
+\listoffigures% Abbildungsverzeichnis
+\listoftables% Tabellenverzeichnis
+\lstlistoflistings
+
+\newpage%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Darstellender Teil
+
+\onehalfspacing% Zeilenabstand
+
+
+\section{Einführung}%
+
+Die amtliche Statistik sorgt mit einer Vielzahl an Veröffentlichungen für die Bereitstellung von aufbereiteten statistischen Informationen. Damit geht sie dem Ziel nach, Bürgern, Institutionen und anderen gesellschaftlichen Einrichtungen eine Datengrundlage für die Entscheidungsfindung zu bieten. Weiter dient die amtliche Statistik auch der Politik und der Wissenschaft als Datenquelle. Das Sammeln und Erheben dieser Daten stellt in vielen Fällen einen Eingriff auf das Recht der informationellen Selbstbestimmung für Personen und Entitäten dar. Dieses Recht ist das Fundament des mordernen Datenschutzes und wird über Artikel 2 des Grundgesetztes abgedeckt. Es steht außer Frage, dass dieses Recht besonders schützenswert ist. Demnach steht auch die amtliche Statistik in der Pflicht dieser Verantwortung nachzukommen. Konkret manifestiert sich das Einhalten dieser Plficht in dem sog. Statistikgeheimnis. Aus dem Bundestatistikgesetzt lässt sich hierzu der folgende Absatz aufgreifen:
+
+\textit{„Einzelangaben über persönliche und sachliche Verhältnisse, die für eine Bundesstatistik gemacht werden, sind von den Amtsträgern und für den öffentlichen Dienst besonders Verpflichteten, die mit der Durchführung von Bundesstatistiken betraut sind, geheim zu halten, soweit durch besondere Rechtsvorschrift nichts anderes bestimmt ist.“} (§ 16 Abs. 1 Satz 1 BStatG).
+
+Konkret möchte man mit der statistischen Geheimhaltung die folgenden Punkte bedienen (nach Begründung zum BStatG; BT-Drucks. Nr. 10/5345 vom 17. April 1986). 
+
+Im weiteren Verlauf dieser Arbeit sollen Geheimhaltungsverfahren und Geheimhaltungsregeln präsentiert werden, die im Einzelnen die statistische Geheimhaltung gewährleisten und damit dem Statistikgeheimnis der amtlichen Statistik nachkommen. Besondere Beachtung wird dabei der Cell Key Methode (CKM) geschenkt. Dieses Verfahren bietet ein Ansatz, welcher gegenüber anderen Verfahren gut zu Implementieren und zu Automatisieren ist. Gerade dieser Punkt ist in einem immer weiter werdenden technolgischen Umfeld nicht außer Acht zu lassen.
+
+%\newpage
+\section{Etablierte Geheimhaltungsverfahren}%
+
+\subsection{Überblick der Statistiken}%
+
+
+Für die oben genannten Statistiken werden jeweils in unterschiedlichen Abständen Daten von den Meldern erhoben. Dabei besitzen die meisten dieser Statistiken einen eigenen Datensatz, der mit seinen individuellen Merkmalen auf den jeweiligen Zweck der Statistik abgestimmt ist. 
+
+\subsection{Datenfluss}%
+
+In diesem Abschnitt soll der Datenfluss innerhalb des Bayerischen Landesamts für Statistik skizziert werden. Ein vollständiger und reibungsloser Datenfluss ist das höchste Ziel im Data Engineering. Einige übergeordnete Konzepte und Definitionen zu dem Bereich Data Engineering finden sich auch in [\cite{cri20}].
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Cell Key Methode}
+
+\subsection{Methodik}%
+
+Dieses Kapitel des Berichts beschäftig sich mit der technischen Umsetzung des in Kapitel 2 beschriebenen Datenflusses. Für die technische Unterstützung kommt hierbei eine eigens im LfStat entwickelte Softwarelösung zum Einsatz. Die Software soll dabei die folgenden Ziele erfüllen: 
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.85\textwidth]{img/ckm_flow.png}
+        \caption{Ablaufdiagramm der Cell Key Methode}
+    \end{center}
+\end{figure}
+
+Die Kernaufgaben der Softwarelösung umfassen also verschiedenen File-Prozesse, Ladeprozesse in Datenbanken und Auswertungssysteme, Datenanalysen und Datenauswertungen sowie Verwaltungsaufgaben, beispielsweise durch das Logging von Arbeitsschritten in einer Datenbank. Allgemeine und weiterführende Konzepte werden auch in Hinblick auf eine technische Umsetzung in [\cite{cri20}] behandelt. 
+
+\subsection{Besonderheiten der Cell Key Methode}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\section{Ergebnisse und Auswertungen}
+
+In diesem Kapitel sollen Ergebnisse über die Datenqualität zusammengetragen werden. Die Analyse solcher (Meta-)Daten ist zentral für das Data Engineering, da hiermit das implementierte System validiert und eine mögliche Verbesserung der Datenqualität durch verschiedene Aufbereitungsprozesse gemessen werden kann. Im Anschluss folgt ein kurzer Überblick über die erhobenen Daten selbst.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\section{Zusammenfassung und Fazit}
+
+Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben Pflichten nachkommen kann, sind die unterschiedlichsten Technologien und Verfahren notwendig. Neben dem Erheben der Daten bei den Meldern, gehören auch die Plausibilisierung und die Aufbereitung der Daten zu seinen Aufgaben. Um eine so große Datenmenge effizient zu verarbeiten, wird auf moderne Lösungen aus der Informationstechnologie zurückgriffen. Hierzu zählen verschiedene Skriptsprachen, Datenbanken und Datawarehouses. Um die Qualität der Daten zu wahren, sind neben rein technischer Kontrollen auch sehr fachliche Zusammenhänge zu prüfen und ggf. zu korrigieren. Dies erfordert ein tiefes inhaltliches Verständnis der Daten und ihrer Merkmale. Eine gewisse Interpretation und Analyse sind also auch im Data Engineering notwendig, um die Datenqualität und den Datenfluss zu erhalten, sowie die Daten zu publizieren und damit die Pflicht der amtlichen Statistik zu erfüllen. 
+
+
+\newpage%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Literaturverzeichnis
+\input{03_literatur_stat_ha}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Wahrheitsgemäße Erklärung
+
+\noindent%
+Ich erkläre hiermit, dass ich die Seminararbeit mit dem Titel \emph{Statistische Geheimhaltung: Cell Key Methode} im \emph{Sommersemester 2022} selbständig angefertigt, keine anderen Hilfsmittel als die im Literaturverzeichnis genannten benutzt und alle aus den Quellen und der Literatur wörtlich oder sinngemäß übernommenen Stellen als solche gekennzeichnet habe.%
+\bigskip
+ 
+\noindent%
+\emph{Bamberg}, den \today\\%
+\emph{Unterschrift}%
+
+\end{document}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
