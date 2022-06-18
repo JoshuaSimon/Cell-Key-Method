@@ -35,35 +35,79 @@
 
 \section{Einführung}%
 
-Die amtliche Statistik sorgt mit einer Vielzahl an Veröffentlichungen für die Bereitstellung von aufbereiteten statistischen Informationen. Damit geht sie dem Ziel nach, Bürgern, Institutionen und anderen gesellschaftlichen Einrichtungen eine Datengrundlage für die Entscheidungsfindung zu bieten. Weiter dient die amtliche Statistik auch der Politik und der Wissenschaft als Datenquelle. Das Sammeln und Erheben dieser Daten stellt in vielen Fällen einen Eingriff auf das Recht der informationellen Selbstbestimmung für Personen und Entitäten dar. Dieses Recht ist das Fundament des mordernen Datenschutzes und wird über Artikel 2 des Grundgesetztes abgedeckt. Es steht außer Frage, dass dieses Recht besonders schützenswert ist. Demnach steht auch die amtliche Statistik in der Pflicht dieser Verantwortung nachzukommen. Konkret manifestiert sich das Einhalten dieser Plficht in dem sog. Statistikgeheimnis. Aus dem Bundestatistikgesetzt lässt sich hierzu der folgende Absatz aufgreifen:
+Die amtliche Statistik sorgt mit einer Vielzahl an Veröffentlichungen für die Bereitstellung von aufbereiteten statistischen Informationen. Damit geht sie dem Ziel nach, Bürgern, Institutionen und anderen gesellschaftlichen Einrichtungen eine Datengrundlage für die Entscheidungsfindung zu bieten. Weiter dient die amtliche Statistik auch der Politik und der Wissenschaft als Datenquelle. Das Sammeln und Erheben dieser Daten stellt in vielen Fällen einen Eingriff auf das Recht der informationellen Selbstbestimmung für Personen und Entitäten dar. Dieses Recht ist das Fundament des mordernen Datenschutzes und wird über Artikel 2 des Grundgesetztes abgedeckt. Es steht außer Frage, dass dieses Recht besonders schützenswert ist. Demnach steht auch die amtliche Statistik in der Pflicht dieser Verantwortung nachzukommen. Konkret manifestiert sich das Einhalten dieser Plficht in dem sog. Statistikgeheimnis. Aus dem Bundestatistikgesetzt lässt sich hierzu der folgende Absatz aufgreifen (\S 16 Abs. 1 Satz 1 BStatG):
 
-\textit{„Einzelangaben über persönliche und sachliche Verhältnisse, die für eine Bundesstatistik gemacht werden, sind von den Amtsträgern und für den öffentlichen Dienst besonders Verpflichteten, die mit der Durchführung von Bundesstatistiken betraut sind, geheim zu halten, soweit durch besondere Rechtsvorschrift nichts anderes bestimmt ist.“} (§ 16 Abs. 1 Satz 1 BStatG).
+\textit{\glqq Einzelangaben über persönliche und sachliche Verhältnisse, die für eine Bundesstatistik gemacht werden, sind von den Amtsträgern und für den öffentlichen Dinest besonders Verpflichteten, die mit der Durchführung von Bundesstatistiken betraut sind, geheim zu halten, soweit durch besondere Rechtsvorschrift nichts anderes bestimmt ist.\grqq{}}
 
-Konkret möchte man mit der statistischen Geheimhaltung die folgenden Punkte bedienen (nach Begründung zum BStatG; BT-Drucks. Nr. 10/5345 vom 17. April 1986). 
+Konkret möchte man mit der statistischen Geheimhaltung einen Schutz für einzelne Person und Entitäten vor der Offenlegung ihrer sensitven Daten bieten. Dies dient im Weiteren auch der Aufrechterhaltung des Vertrauensverhältnisses zwischen den Befragten und den statistischen Ämtern und erhebenden Einrichtungen. Dies gewährleistet abermals die Zuverlässigkeit der Angaben und der Berichtswilligkeit der Befragten. Die vorausgegangenen Punkte werden in einer Begrüdung zum BStatG erwähnt [\cite{Nickl}]. Ausnahmen von einer Geheimhaltung bestehen nur in Ausnahmefällen, z.B. wenn eine explizite Einwillung zur Veröffentlichung durch den Befragten vorliegt oder wenn sich die Informationen aus allgemein zugänglichen Quellen von öffentlichen Stellen beziehen. Auch die inner-beördliche Übermittlung, Methodenentwicklung, Planungs- und Forschungszwecke werden über das BStatG geregelt.
 
 Im weiteren Verlauf dieser Arbeit sollen Geheimhaltungsverfahren und Geheimhaltungsregeln präsentiert werden, die im Einzelnen die statistische Geheimhaltung gewährleisten und damit dem Statistikgeheimnis der amtlichen Statistik nachkommen. Besondere Beachtung wird dabei der Cell Key Methode (CKM) geschenkt. Dieses Verfahren bietet ein Ansatz, welcher gegenüber anderen Verfahren gut zu Implementieren und zu Automatisieren ist. Gerade dieser Punkt ist in einem immer weiter werdenden technolgischen Umfeld nicht außer Acht zu lassen.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\newpage
-\section{Etablierte Geheimhaltungsverfahren}%
+\section{Etablierte Geheimhaltungsverfahren}
 
-\subsection{Überblick der Statistiken}%
+In diesem Abschnitt sollen zunächst die grundlegenden Begrifflichkeiten für Geheimhaltungsverfahren und Geheimhaltungsregeln beschrieben werden. 
+
+\subsection{Methodische Grundlagen}
+
+Grundsätzlich gibt es zwei sich unterscheidenede methodische Ansätze, die bei der Geheimhaltung zum Tragen kommen können. Zum einen existieren \textit{informationsreduzierende Methoden}. In der Gattung dieser Verfahren werden durch Aggregation oder Sperrrung kritische Kategorien oder Werte die Aufdeckungsrisiken verhindert. Eine Aggregation meint in diesem Fall das Zusammenfassen zu übergeordneteten Positionen, z.B. durch Summation kleinerer Positionen. Bei einer Sperrung ist auch oft von einer Löschung die Rede. Hier werden gezielt einzelne Werte identifiziert und aus der Tabelle entfernt. Als Kontrast stehen \textit{datenverändernde Methoden} gegenüber. Hier werden durch gezielte Veränderungen der Daten - beispielsweise durch Runden oder Zufallsüberlagerungen - kritische Werte verfälscht, was auch für eine erfolgreiche statistische Geheimhaltung sorgen kann. 
+
+Weiter differenziert man Geheimhaltungsverfahren auch nach dem Zeitpunkt ihrer Durchführung. Die Daten können bereits vor der Tabellierung mit einer Geheimhaltung versehen werden. Man spricht hier von \textit{pre-tabulare Verfahren}. Diese Verfahren werden als Anonymisierung bezeichnet, da die Daten im Vorfeld so verändert werden, dass keine kritischen Ergebnisse resultieren. Oftmals ist diese Art von Geheimhaltung aber nicht ausreichend, weshalb weitere Verfahren im Anschluss angewandt werden müssen. Man spricht nun von \textit{post-tabulare Verfahren}. Ihre Mechanismen werden auf die ferig tabellierten Daten angewandt.
 
 
-Für die oben genannten Statistiken werden jeweils in unterschiedlichen Abständen Daten von den Meldern erhoben. Dabei besitzen die meisten dieser Statistiken einen eigenen Datensatz, der mit seinen individuellen Merkmalen auf den jeweiligen Zweck der Statistik abgestimmt ist. 
+\subsection{Statistische Tabellen}
 
-\subsection{Datenfluss}%
+Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Großteil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Maßgebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen}. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universität. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
 
-In diesem Abschnitt soll der Datenfluss innerhalb des Bayerischen Landesamts für Statistik skizziert werden. Ein vollständiger und reibungsloser Datenfluss ist das höchste Ziel im Data Engineering. Einige übergeordnete Konzepte und Definitionen zu dem Bereich Data Engineering finden sich auch in [\cite{cri20}].
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r }
+        \textbf{Studienfach} \vline & \textbf{männlich} & \textbf{weiblich} & \textbf{insgesamt} \\ 
+        \hline
+        Bauingenieurwesen \vline & $4$ & $3$ & $7$ \\
+        Informatik \vline & $9$ & $12$ & $21$ \\  
+        Medizin \vline & $4$ & $1$ & $5$ \\
+        Survey Statistik \vline & $10$ & $10$ & $20$ \\
+        \hline
+        Gesamt \vline & $27$ & $26$ & $53$
+    \end{tabular}
+    \caption{Beispiel für eine Häufigkeitstabelle}
+\end{table}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r r }
+        \textbf{Brauerei} \vline & \textbf{Mährs Bräu} & \textbf{Schinkerla} & \textbf{Käsmann} & \textbf{Gesamt} \\ 
+        \hline
+        Umsatz \vline & $600.000$ & $50.000$ & $250.000$ & $900.000$
+        \end{tabular}
+    \caption{Beispiel für eine Wertetabelle}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Cell Key Methode}
 
+Die im vorherigen Kapitel beschrieben Geheimhaltungsverfahren müssen in der Regel - zumindest bis zu einem gewissen Grad - manuell durchgeführt werden und eine Automatisierung ist eher unfelxibel. Mit der \textit{Cell Key Methode (CKM)} wird ein Geheimhaltungsverfahren präsentiert, welches gut zu automatisieren und vergleichsweise einfach zu implementieren ist. Die Cell Key Methode ist auch als \textit{ABS-Verfahren} bekannt. Der Name stammt von der schöpfenden Institutuion des Verfahrens, dem Australian Bureau of Statistics, ab. Durch die Verwendung von zufallsbasierten Additionen, den sog. Überlagerungen, werden Datenwerte verschleiert. Die CKM zählt damit zu den datenveränderndeden Verfahren. 
+
 \subsection{Methodik}%
 
-Dieses Kapitel des Berichts beschäftig sich mit der technischen Umsetzung des in Kapitel 2 beschriebenen Datenflusses. Für die technische Unterstützung kommt hierbei eine eigens im LfStat entwickelte Softwarelösung zum Einsatz. Die Software soll dabei die folgenden Ziele erfüllen: 
+Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestellt. Ähnlich wie in [\cite{Wipke}] beschrieben, lässt sich nun ein Algorithmus formulieren.
+
+\begin{enumerate}
+    \item Erzeugung der Originalwerte mit einem Auswertungstool
+    \item Cell-Key-Bestimmung aus Zufallszahlen innerhalb des Auswertungs-Tools
+    \item Lookup-Modul
+    \begin{enumerate}
+        \item Auslesen der Überlagerungswerte aus der Überlagerungsmatrix
+        \item Addieren der Überlagerungswerte und Originalwerte
+    \end{enumerate}
+\end{enumerate}
+
+Die folgende Abbildung visualisiert den schehmatischen Ablauf des zuvor beschrieben Algorithmus.
 
 \begin{figure}[H]
     \begin{center}
@@ -72,7 +116,13 @@ Dieses Kapitel des Berichts beschäftig sich mit der technischen Umsetzung des i
     \end{center}
 \end{figure}
 
-Die Kernaufgaben der Softwarelösung umfassen also verschiedenen File-Prozesse, Ladeprozesse in Datenbanken und Auswertungssysteme, Datenanalysen und Datenauswertungen sowie Verwaltungsaufgaben, beispielsweise durch das Logging von Arbeitsschritten in einer Datenbank. Allgemeine und weiterführende Konzepte werden auch in Hinblick auf eine technische Umsetzung in [\cite{cri20}] behandelt. 
+\subsubsection{Erzeugung der Originalwerte}
+
+\subsubsection{Cell-Key-Bestimmung}
+
+Jedem Mikrodatensatz wird eine gleichverteile Zufallszahl $r$, dem sog. \textit{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet. Mit diesen Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Es ergeben sich also Summen von Record-Keys. Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textit{Cell-Key}.
+
+\subsubsection{Lookup-Modul}
 
 \subsection{Besonderheiten der Cell Key Methode}%
 
