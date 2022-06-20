@@ -2,7 +2,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Vorlage für Statistik-Hausarbeiten: Kopfdatei %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \input{01_header_stat_ha}% Header, kann unverändert übernommen werden
 \hyphenation{}% hier nicht korrekte Wörter eingeben: Bindestrich an Trennstellen, Wörter durch Komma getrennt (keine Umlaute)
 
@@ -95,7 +94,7 @@ Die im vorherigen Kapitel beschrieben Geheimhaltungsverfahren müssen in der Reg
 
 \subsection{Methodik}%
 
-Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestellt. Ähnlich wie in [\cite{Wipke}] beschrieben, lässt sich nun ein Algorithmus formulieren.
+Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestellt. Ähnlich wie in [\cite{Wipke}] beschrieben, lässt sich nun ein Algorithmus formulieren. Ausgangspunkt sind die in einer Statistik erhobenen Mikrodaten bzw. Mikrodatensätze. Das sind die plausibilisierten Einzeldatensätze.
 
 \begin{enumerate}
     \item Erzeugung der Originalwerte mit einem Auswertungstool
@@ -107,20 +106,64 @@ Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestel
     \end{enumerate}
 \end{enumerate}
 
-Die folgende Abbildung visualisiert den schehmatischen Ablauf des zuvor beschrieben Algorithmus.
+Die folgende Abbildung \ref{fig_ckm_chart} visualisiert den schehmatischen Ablauf des zuvor beschrieben Algorithmus. Im Wesentlichen werden zwei technische System benötigt, um das Verfahren zu realisieren. Zum einen wird ein Auswertungstool benötigt, welches die gespeicherten Mikrodaten in Tabellenform bringt. Mit Hilfe des Lookup-Moduls werden dann die beiden Eingangsgrö\ss en - Originalwerte und Cell-Keys - verwendet, um die Überlagerungswerte aus der Überlagerungsmatrix zu bestimmen. Diese Überlagerungswerte werden letztlich auf die Originalwerte addiert und stellen damit die finalen Werte für die Veröffentlichung dar. 
 
 \begin{figure}[H]
     \begin{center}
         \includegraphics[width=0.85\textwidth]{img/ckm_flow.png}
         \caption{Ablaufdiagramm der Cell Key Methode}
+        \label{fig_ckm_chart}
     \end{center}
 \end{figure}
 
+Die Einzelschritte des Verfahrens sollen nun im Detail belechtet werden.
+
 \subsubsection{Erzeugung der Originalwerte}
+
+Dieser Schritt ist spezifisch für die jeweilige Zieltablle, die veröffentlicht werden soll. Im Allgemeinen werden Filterungen anhand bestimmter Merkamle vorgenommen und dann Summen der Fallzahlen gebildet. Für diese Operation - also die Tabellierung - führt man die Beizeichnung $f$ ein.
 
 \subsubsection{Cell-Key-Bestimmung}
 
-Jedem Mikrodatensatz wird eine gleichverteile Zufallszahl $r$, dem sog. \textit{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet. Mit diesen Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Es ergeben sich also Summen von Record-Keys. Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textit{Cell-Key}.
+Für die Bestimmung des Cell-Keys wird jedem Mikrodatensatz zunächst eine gleichverteile Zufallszahl $r$, der sog. \textit{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet. Mit diesen Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Man führt also diesseble  Operation $f$ auf den Daten durch, wie in Abschnitt 3.1.1. Es ergeben sich also Summen von Record-Keys. Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textit{Cell-Key}. Um dieses Vorgehen zu verdeutlichen soll das folgende Beispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_mikrodaten} zeigt die Mikrodaten mit Record-Keys, wie sie in einer Datenbank gespeichert sein könnten.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r }
+        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschlecht} & \textbf{Record-Key} \\ 
+        \hline
+        $1$ \vline & Würzburg & m & $0,611853$ \\
+        $2$ \vline & Einchstätt & w & $0,139494$ \\
+        $3$ \vline & München & w & $0,292145$ \\
+        $4$ \vline & München & m & $0,366362$ \\
+        $5$ \vline & Würzburg & m & $0,456070$ \\
+        $6$ \vline & Würzburg & m & $0,785176$ \\
+        $7$ \vline & Bamberg & m & $0,199674$ \\
+        $8$ \vline & München & w & $0,514234$ \\
+        $9$ \vline & München & m & $0,592415$ \\
+        $10$ \vline & München & m & $0,046450$
+    \end{tabular}
+    \caption{Mikrodaten mit Record-Keys}
+    \label{tab_mikrodaten}
+\end{table}
+
+Tabelle \ref{tab_agg} stellt die Daten nach Durchführung der Tabellierung $f$ dar. Die Daten wurden hier nach der Universität und nach dem Geschlecht zusammengefasst. Die entsprechenden Fallzahlen, Record-Key-Summen und Cell-Keys werden abgebildet. 
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r r r}
+        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschlecht} & \textbf{Fallzahl} & \textbf{Record-Key-Summe} & \textbf{Cell-Key} \\ 
+        \hline
+        $1$ \vline & Bamberg & m & $1$ & $0,199674$ & $0,199674$ \\
+        $2$ \vline & Einchstätt & w & $1$ & $0,139494$ & $0,139494$ \\
+        $3$ \vline & München & m & $3$ & $1,005227$ & $0,005227$ \\
+        $4$ \vline & München & w & $2$ & $0,806379$ & $0,806379$ \\
+        $5$ \vline & Würzburg & m & $3$ & $1,853099$ & $0,853099$
+    \end{tabular}
+    \caption{Aggregierte Daten mit Record-Key-Summen und Cell-Key}
+    \label{tab_agg}
+\end{table}
+
+Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zeilen in Tabelle \ref{tab_mikrodaten}, in denen $Universit\ddot{a}t = W\ddot{u}rzburg \: \wedge \: Geschlecht = m$. Die Record-Key-Summe in dieser Zeile ergibt sich nach $0,611853 + 0,456070 + 0,785176 = 1,853099$. Der daraus abgeleitete Cell-Key beträgt damit $0,853099$.
 
 \subsubsection{Lookup-Modul}
 
