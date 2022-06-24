@@ -34,13 +34,13 @@
 
 \section{Einführung}%
 
-Die amtliche Statistik sorgt mit einer Vielzahl an Veröffentlichungen für die Bereitstellung von aufbereiteten statistischen Informationen. Damit geht sie dem Ziel nach, Bürgern, Institutionen und anderen gesellschaftlichen Einrichtungen eine Datengrundlage für die Entscheidungsfindung zu bieten. Weiter dient die amtliche Statistik auch der Politik und der Wissenschaft als Datenquelle. Das Sammeln und Erheben dieser Daten stellt in vielen Fällen einen Eingriff auf das Recht der informationellen Selbstbestimmung für Personen und Entitäten dar. Dieses Recht ist das Fundament des mordernen Datenschutzes und wird über Artikel 2 des Grundgesetztes abgedeckt. Es steht außer Frage, dass dieses Recht besonders schützenswert ist. Demnach steht auch die amtliche Statistik in der Pflicht dieser Verantwortung nachzukommen. Konkret manifestiert sich das Einhalten dieser Plficht in dem sog. Statistikgeheimnis. Aus dem Bundestatistikgesetzt lässt sich hierzu der folgende Absatz aufgreifen (\S 16 Abs. 1 Satz 1 BStatG):
+Die amtliche Statistik sorgt mit einer Vielzahl an Veröffentlichungen für die Bereitstellung von aufbereiteten statistischen Informationen. Damit geht sie dem Ziel nach, Bürgern, Institutionen und anderen gesellschaftlichen Einrichtungen eine Datengrundlage für die Entscheidungsfindung zu bieten. Weiter dient die amtliche Statistik auch der Politik und der Wissenschaft als Datenquelle. Das Sammeln und Erheben dieser Daten stellt in vielen Fällen einen Eingriff auf das Recht der informationellen Selbstbestimmung für Personen und Entitäten dar. Dieses Recht ist das Fundament des mordernen Datenschutzes und wird über Artikel 2 des Grundgesetztes abgedeckt. Es steht au\ss er Frage, dass dieses Recht besonders schützenswert ist. Demnach steht auch die amtliche Statistik in der Pflicht dieser Verantwortung nachzukommen. Konkret manifestiert sich das Einhalten dieser Plficht in dem sog. Statistikgeheimnis. Aus dem Bundestatistikgesetzt lässt sich hierzu der folgende Absatz aufgreifen (\S 16 Abs. 1 Satz 1 BStatG):
 
 \textit{\glqq Einzelangaben über persönliche und sachliche Verhältnisse, die für eine Bundesstatistik gemacht werden, sind von den Amtsträgern und für den öffentlichen Dienst besonders Verpflichteten, die mit der Durchführung von Bundesstatistiken betraut sind, geheim zu halten, soweit durch besondere Rechtsvorschrift nichts anderes bestimmt ist.\grqq{}}
 
 Konkret möchte man mit der statistischen Geheimhaltung einen Schutz für einzelne Person und Entitäten vor der Offenlegung ihrer sensitven Daten bieten. Dies dient im Weiteren auch der Aufrechterhaltung des Vertrauensverhältnisses zwischen den Befragten und den statistischen Ämtern und erhebenden Einrichtungen. Dies gewährleistet abermals die Zuverlässigkeit der Angaben und der Berichtswilligkeit der Befragten. Die vorausgegangenen Punkte werden in einer Begrüdung zum BStatG erwähnt [\cite{Nickl}]. Ausnahmen von einer Geheimhaltung bestehen nur in Ausnahmefällen, z.B. wenn eine explizite Einwillung zur Veröffentlichung durch den Befragten vorliegt oder wenn sich die Informationen aus allgemein zugänglichen Quellen von öffentlichen Stellen beziehen. Auch die inner-beördliche Übermittlung, Methodenentwicklung, Planungs- und Forschungszwecke werden über das BStatG geregelt.
 
-Im weiteren Verlauf dieser Arbeit sollen Geheimhaltungsverfahren und Geheimhaltungsregeln präsentiert werden, die im Einzelnen die statistische Geheimhaltung gewährleisten und damit dem Statistikgeheimnis der amtlichen Statistik nachkommen. Besondere Beachtung wird dabei der Cell Key Methode (CKM) geschenkt. Dieses Verfahren bietet ein Ansatz, welcher gegenüber anderen Verfahren gut zu Implementieren und zu Automatisieren ist. Gerade dieser Punkt ist in einem immer weiter werdenden technolgischen Umfeld nicht außer Acht zu lassen.
+Im weiteren Verlauf dieser Arbeit sollen Geheimhaltungsverfahren und Geheimhaltungsregeln präsentiert werden, die im Einzelnen die statistische Geheimhaltung gewährleisten und damit dem Statistikgeheimnis der amtlichen Statistik nachkommen. Besondere Beachtung wird dabei der Cell Key Methode (CKM) geschenkt. Dieses Verfahren bietet ein Ansatz, welcher gegenüber anderen Verfahren gut zu Implementieren und zu Automatisieren ist. Gerade dieser Punkt ist in einem immer weiter werdenden technolgischen Umfeld nicht au\ss er Acht zu lassen.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -58,7 +58,7 @@ Weiter differenziert man Geheimhaltungsverfahren auch nach dem Zeitpunkt ihrer D
 
 \subsection{Statistische Tabellen}
 
-Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Großteil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Maßgebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen}. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universität. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
+Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Gro\ss teil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Ma\ss gebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen}. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universität. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
 
 \begin{table}[h]
     \centering
@@ -85,16 +85,39 @@ Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar.
     \caption{Beispiel für eine Wertetabelle}
 \end{table}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \section{Cell Key Methode}
 
-Die im vorherigen Kapitel beschrieben Geheimhaltungsverfahren müssen in der Regel - zumindest bis zu einem gewissen Grad - manuell durchgeführt werden und eine Automatisierung ist eher unfelxibel. Mit der \textit{Cell Key Methode (CKM)} wird ein Geheimhaltungsverfahren präsentiert, welches gut zu automatisieren und vergleichsweise einfach zu implementieren ist. Die Cell Key Methode ist auch als \textit{ABS-Verfahren} bekannt. Der Name stammt von der schöpfenden Institutuion des Verfahrens, dem Australian Bureau of Statistics, ab. Durch die Verwendung von zufallsbasierten Additionen, den sog. Überlagerungen, werden Datenwerte verschleiert. Die CKM zählt damit zu den datenveränderndeden Verfahren. 
+Die im vorherigen Kapitel beschrieben Geheimhaltungsverfahren müssen in der Regel - zumindest bis zu einem gewissen Grad - manuell durchgeführt werden und eine Automatisierung ist eher unfelxibel. Mit der \textit{Cell Key Methode (CKM)} wird ein Geheimhaltungsverfahren präsentiert, welches gut zu automatisieren und vergleichsweise einfach zu implementieren ist. Die Cell Key Methode ist auch als \textit{ABS-Verfahren} bekannt. Der Name stammt von der schöpfenden Institutuion des Verfahrens, dem Australian Bureau of Statistics, ab. Durch die Verwendung von zufallsbasierten Additionen, den sog. Überlagerungen, werden Datenwerte verschleiert. Der Ermittlung einer solchen zufallsbasierten Addition liegt eine einmalig festzulegende Wahrscheinlichkeitsverteilung mit den möglichen Überlagerungswerten zugrunde [\cite{Enderle}]. Für die Bestimmung dieser Überlagerungen wird ein deterministischer Mechaniusmus eingesetzt. Dieser nutzt den original Zellwert und den sog. Cell-Key um aus der Verteilung der Überlagerungswerte eine eindeutige Überlagerung zu ziehen [\cite{Enderle}]. Eine mit dem CKM Verfahren geheimgehaltene Tabelle veröffentlicht also die Summe aus Originalwerten und Überlagerungen. Die CKM zählt damit zu den datenveränderndeden Verfahren.
 
-\subsection{Methodik}%
+\subsection{Verfahrensparamter und Überlagerungsmatrix}
 
-Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestellt. Ähnlich wie in [\cite{Wipke}] beschrieben, lässt sich nun ein Algorithmus formulieren. Ausgangspunkt sind die in einer Statistik erhobenen Mikrodaten bzw. Mikrodatensätze. Das sind die plausibilisierten Einzeldatensätze.
+An statistische Geheimhaltungsverfahren, insbesondere den datenverändernden Verfahren, werde bestimmte Anforderungen gestellt. Für die Cell Key Methode werden in der amtlichen Statistik gewisse stochastische Eigenschfaten gefordert, um die Qualität und Nachvollziehbarkeit der Ergebnisse zu sichern. Zu diesen Eigenschaften zählt einerseits die Unverzerrtheit der Überlagerungen [\cite{Enderle}]. Damit meint man, dass der Überlagerungswert, welcher zu den Originalwerten addiert wird, im Mittel gleich Null ist. Es soll also die Erwartungstreue $E(z) = 0$ gelten. Darüber hinaus fodert man ebenfalls eine konstante Streuung der Verteilung der Überlagerungen [\cite{Enderle}]. Es soll die Varianz erhalten bleiben, also $Var(z) = s^2$ gelten. Um diese beiden Eigenschaften zu kokretisieren werden Verfahrensparamter eingeführt. Diese dienen weiter auch dazu das Geheimhaltungsverfahren - und damit die Überlagerungen - an verschiedene Kontexte anzupassen. Zu diesen Verfahrensparamter zählen nach [\cite{Höhne}]:
+
+\begin{itemize}
+    \item Eine boolsche Variable, die angibt, ob Originalwerte $1$ und $2$ geheimgehalten werden sollen.
+    \item Der Anteil $p_0$ der nicht zu überlagernden Originalwerte.
+    \item Die Maximalüberlagerung $d$.
+    \item Die Standardabweichung der Überlagerungsbeiträge $s$.
+\end{itemize}
+
+Gestand des Interesses sind demnach Zufallsfunktionen $z$, die eine bedingte Wahrscheinlichkeitsverteilung auf die Originalwerte $i$ mit Zielhäufigkeit $j$ darstellen. Man sucht also für jeden Originalwert $i = \{0, 1, 2, \dots, n \}$ eine Wahrscheinlichkeitsverteilung der Form $z = p_i$ mit den Wahrscheinlichkeiten für die Übergänge $v_i$ hin zu den Zielhäufigkeiten $j$ [\cite{Enderle}]. Diese Wahrscheinlichkeiten bilden ein nicht-lineares Gleichungssystem, in welchem die zuvor genannten stochastischen Eigenschaften als Nebenbedinungen eingehen. Diese lassen sich nun als 
+
+\begin{align}
+    E(z) & = \sum_{i = -d}^{d} p_i v_i = 0 \\
+    Var(z) & = \sum_{i = -d}^{d} p_i v_{i}^{2} = s^2 \\
+    & \sum_{i = -d}^{d} p_i = 1
+\end{align}
+
+schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile noch gefordert, dass die Summe der Übergangswahrscheinlichkeiten für einen Originalwert gleich $1$ ist. Die Lösung dieses Problems lässt sich in Matrixform notieren. Man spricht hier von der sog. Überlagerungsmatrix mit Zeilen $i$ und Spalten $j$, welche zur Bestimmung der Überlagerungsbeiträge $j$ zu den Originalwerten $i$ verwendet werden kann. Für weitere mathematische Details und Lösungsansätze sei an dieser Stelle auf [] verwiesen. 
+
+\subsection{Methodik und Verfahrensdurchführung}%
+
+Die wichtigsten Bestandteile des Verfahrens werden in [\cite{Enderle}] dargestellt. Ähnlich wie in [\cite{Wipke}] beschrieben, lässt sich nun ein Algorithmus formulieren. Ausgangspunkt sind die in einer Statistik erhobenen Mikrodaten bzw. Mikrodatensätze. Das sind die plausibilisierten Einzeldatensätze. 
 
 \begin{enumerate}
     \item Erzeugung der Originalwerte mit einem Auswertungstool
@@ -116,7 +139,7 @@ Die folgende Abbildung \ref{fig_ckm_chart} visualisiert den schehmatischen Ablau
     \end{center}
 \end{figure}
 
-Die Einzelschritte des Verfahrens sollen nun im Detail belechtet werden.
+Die Einzelschritte des Verfahrens sollen nun im Detail beleuchtet werden.
 
 \subsubsection{Erzeugung der Originalwerte}
 
@@ -124,7 +147,7 @@ Dieser Schritt ist spezifisch für die jeweilige Zieltablle, die veröffentlicht
 
 \subsubsection{Cell-Key-Bestimmung}
 
-Für die Bestimmung des Cell-Keys wird jedem Mikrodatensatz zunächst eine gleichverteile Zufallszahl $r$, der sog. \textit{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet. Mit diesen Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Man führt also diesseble  Operation $f$ auf den Daten durch, wie in Abschnitt 3.1.1. Es ergeben sich also Summen von Record-Keys. Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textit{Cell-Key}. Um dieses Vorgehen zu verdeutlichen soll das folgende Beispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_mikrodaten} zeigt die Mikrodaten mit Record-Keys, wie sie in einer Datenbank gespeichert sein könnten.
+Für die Bestimmung des Cell-Keys wird jedem Mikrodatensatz zunächst eine gleichverteile Zufallszahl $r$, der sog. \textit{Record-Key}, mit $r \sim \mathcal{U}(0, 1)$ zugeordnet. Mit diesen Record-Keys wird dieselbe Auswertungstabelle wie mit den Originalwerten gebildet. Man führt also diesseble  Operation $f$ auf den Daten durch, wie in Abschnitt 3.1.1. Es ergeben sich also Summen von Record-Keys. Von diesen Record-Key Summen werden nur die Nachkommastellen betrachtet. Dieser Wert definiert den \textit{Cell-Key} [\cite{Enderle}]. Um dieses Vorgehen zu verdeutlichen soll das folgende Beispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_mikrodaten} zeigt die Mikrodaten mit Record-Keys, wie sie in einer Datenbank gespeichert sein könnten.
 
 \begin{table}[h]
     \centering
@@ -167,7 +190,15 @@ Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zei
 
 \subsubsection{Lookup-Modul}
 
+Im Anschluss an die Bestimmung der Originalwerte und der dazugehörigen Cell-Keys gilt es nun die Überlagerungen zu berechnen. Für die Bestimmung eines Überlagerungswertes dient das Paar $(Originalwert, CellKey)$ als Input. Damit meint man den Wert einer einzelnen Tabellenzelle und den über dieselbe Operation $f$ berechneteten Cell-Key. Das Lookup Modul stellt die Funktionalität bereit, anhand dieses Wertepaares den zugehörigen Überlagerungswert aus der Überlagerungsmatrix abzulesen. 
+
+
+
 \subsection{Besonderheiten der Cell Key Methode}%
+
+Test
+
+\subsection{Aufdeckungsrisiko}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -185,7 +216,6 @@ In diesem Kapitel sollen Ergebnisse über die Datenqualität zusammengetragen we
 
 Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben Pflichten nachkommen kann, sind die unterschiedlichsten Technologien und Verfahren notwendig. Neben dem Erheben der Daten bei den Meldern, gehören auch die Plausibilisierung und die Aufbereitung der Daten zu seinen Aufgaben. Um eine so große Datenmenge effizient zu verarbeiten, wird auf moderne Lösungen aus der Informationstechnologie zurückgriffen. Hierzu zählen verschiedene Skriptsprachen, Datenbanken und Datawarehouses. Um die Qualität der Daten zu wahren, sind neben rein technischer Kontrollen auch sehr fachliche Zusammenhänge zu prüfen und ggf. zu korrigieren. Dies erfordert ein tiefes inhaltliches Verständnis der Daten und ihrer Merkmale. Eine gewisse Interpretation und Analyse sind also auch im Data Engineering notwendig, um die Datenqualität und den Datenfluss zu erhalten, sowie die Daten zu publizieren und damit die Pflicht der amtlichen Statistik zu erfüllen. 
 
-
 \newpage%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -193,14 +223,22 @@ Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben P
 %%% Literaturverzeichnis
 \input{03_literatur_stat_ha}%
 
+\newpage 
+\appendix
+\section{Python Implementierung}
+
+Nachfolgend ist die vollständige \textit{Python} Implementierung des CKM Verfahrens für ein Testbeispiel aus der Hochschulstatistik abgebildet.
+
+\lstinputlisting[language=Python, caption=CKM Python Beispiel]{../src/ckm.py}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% Wahrheitsgemäße Erklärung
 
+\newpage 
 \noindent%
-Ich erkläre hiermit, dass ich die Seminararbeit mit dem Titel \emph{Statistische Geheimhaltung: Cell Key Methode} im \emph{Sommersemester 2022} selbständig angefertigt, keine anderen Hilfsmittel als die im Literaturverzeichnis genannten benutzt und alle aus den Quellen und der Literatur wörtlich oder sinngemäß übernommenen Stellen als solche gekennzeichnet habe.%
+Ich erkläre hiermit, dass ich die Seminararbeit mit dem Titel \emph{Statistische Geheimhaltung: Cell Key Methode} im \emph{Sommersemester 2022} selbständig angefertigt, keine anderen Hilfsmittel als die im Literaturverzeichnis genannten benutzt und alle aus den Quellen und der Literatur wörtlich oder sinngemä\ss übernommenen Stellen als solche gekennzeichnet habe.%
 \bigskip
  
 \noindent%
