@@ -8,6 +8,8 @@
 import math
 import numpy as np
 import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
  
 
 # Values for the overlay matrix and vector are taken from 
@@ -25,6 +27,13 @@ OVERLAY_MATRIX = np.matrix([
 ])
 
 CHANGE_VECTOR = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+
+
+def matrix_plot(matrix, vector):
+    sns.heatmap(matrix, annot=True, xticklabels=vector, cbar=False)
+    plt.xlabel("Überlagerungen")
+    plt.ylabel("Originalwerte")
+    plt.show()
 
 
 def generate_data(n, seed):
@@ -153,6 +162,8 @@ if __name__ == "__main__":
     #print(data)
     print(table_data)
     print(overlayed_data)
+
+    matrix_plot(OVERLAY_MATRIX, CHANGE_VECTOR)
     
     #print(get_cell_key(2.456))
     #print(get_len_of_int(1000))

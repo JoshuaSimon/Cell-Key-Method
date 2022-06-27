@@ -113,7 +113,18 @@ Gestand des Interesses sind demnach Zufallsfunktionen $z$, die eine bedingte Wah
     & \sum_{i = -d}^{d} p_i = 1
 \end{align}
 
-schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile $(3)$ noch gefordert, dass die Summe der Übergangswahrscheinlichkeiten für einen Originalwert gleich $1$ ist. Die Lösung dieses Problems lässt sich in Matrixform notieren. Man spricht hier von der sog. Überlagerungsmatrix mit Zeilen $i$ und Spalten $j$, welche zur Bestimmung der Überlagerungsbeiträge $j$ zu den Originalwerten $i$ verwendet werden kann. Für weitere mathematische Details und Lösungsansätze sei an dieser Stelle auf [] verwiesen. 
+schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile $(3)$ noch gefordert, dass die Summe der Übergangswahrscheinlichkeiten für einen Originalwert gleich $1$ ist. Die Lösung dieses Problems lässt sich in Matrixform notieren. Man spricht hier von der sog. Überlagerungsmatrix mit Zeilen $i$ und Spalten $j$, welche zur Bestimmung der Überlagerungsbeiträge $j$ zu den Originalwerten $i$ verwendet werden kann. Für weitere mathematische Details und Lösungsansätze sei an dieser Stelle auf [\cite{Giessing}] verwiesen. In [\cite{Höhne}] wird die Lösung eines solchen Gleichungssystems für die Verfahrensparamter $p_0 = 0,5 = 50\%$, $d = 4$ und $s = 2,25$ gezeigt. Diese Überlagerungsmatrix ist in Abbildung \ref{matrix_plot} in Form einer Heatmap zu sehen. Der \textit{Python} Code zum Erstellen dieser Grafik ist in Anhang A zu finden.
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.85\textwidth]{img/matrix.png}
+        \caption{Beispiel für eine Überlagerungsmatrix mit Übergangswahrscheinlichkeiten für paarige Originalwerte und Zielhäufigkeiten}
+        \label{matrix_plot}
+    \end{center}
+\end{figure}
+
+Es ist hierbei anzumerken, dass direkt eine symmetrische Verteilung für die Überlagerungsbeiträge gewählt wurde. Auf der $x$-Achse sind die anzuwendenden Überlagerungswerte von $-d$ bis $d$ zu sehen. Auf der $y$-Achse sind die Originalwert abgetragen. In der jeweiligen Zelle sind die einzelnen Übergangswahrscheinlichkeiten abzulesen. Für Originalwerte  grö\ss er $7$ ist die Zeile für Originalwerte gleich $7$ ma\ss gebend.
+
 
 \subsection{Methodik und Verfahrensdurchführung}%
 
