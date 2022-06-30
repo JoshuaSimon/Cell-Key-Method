@@ -96,7 +96,7 @@ Die im vorherigen Kapitel beschrieben Geheimhaltungsverfahren müssen in der Reg
 
 \subsection{Verfahrensparamter und Überlagerungsmatrix}
 
-An statistische Geheimhaltungsverfahren, insbesondere den datenverändernden Verfahren, werde bestimmte Anforderungen gestellt. Für die Cell Key Methode werden in der amtlichen Statistik gewisse stochastische Eigenschfaten gefordert, um die Qualität und Nachvollziehbarkeit der Ergebnisse zu sichern. Zu diesen Eigenschaften zählt einerseits die Unverzerrtheit der Überlagerungen [\cite{Enderle}]. Damit meint man, dass der Überlagerungswert, welcher zu den Originalwerten addiert wird, im Mittel gleich Null ist. Es soll also die Erwartungstreue $E(z) = 0$ gelten. Darüber hinaus fodert man ebenfalls eine konstante Streuung der Verteilung der Überlagerungen [\cite{Enderle}]. Es soll die Varianz erhalten bleiben, also $Var(z) = s^2$ gelten. Um diese beiden Eigenschaften zu kokretisieren werden Verfahrensparamter eingeführt. Diese dienen weiter auch dazu das Geheimhaltungsverfahren - und damit die Überlagerungen - an verschiedene Kontexte anzupassen. Zu diesen Verfahrensparamter zählen nach [\cite{Höhne}]:
+An statistische Geheimhaltungsverfahren, insbesondere den datenverändernden Verfahren, werde bestimmte Anforderungen gestellt. Für die Cell Key Methode werden in der amtlichen Statistik gewisse stochastische Eigenschfaten gefordert, um die Qualität und Nachvollziehbarkeit der Ergebnisse zu sichern. Zu diesen Eigenschaften zählt einerseits die Unverzerrtheit der Überlagerungen [\cite{Enderle}]. Damit meint man, dass der Überlagerungswert, welcher zu den Originalwerten addiert wird, im Mittel gleich Null ist. Es soll also die Erwartungstreue $E(z) = 0$ gelten. Darüber hinaus fodert man ebenfalls eine konstante Streuung der Verteilung der Überlagerungen [\cite{Enderle}]. Es soll die Varianz erhalten bleiben, also $Var(z) = s^2$ gelten. Um diese beiden Eigenschaften zu kokretisieren, werden Verfahrensparamter eingeführt. Diese dienen weiter auch dazu das Geheimhaltungsverfahren - und damit die Überlagerungen - an verschiedene Kontexte anzupassen. Zu diesen Verfahrensparamter zählen nach [\cite{Höhne}]:
 
 \begin{itemize}
     \item Eine boolsche Variable, die angibt, ob Originalwerte $1$ und $2$ geheimgehalten werden sollen.
@@ -123,7 +123,7 @@ schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile $(3)$ noch gefordert,
     \end{center}
 \end{figure}
 
-Es ist hierbei anzumerken, dass direkt eine symmetrische Verteilung für die Überlagerungsbeiträge gewählt wurde. Auf der $x$-Achse sind die anzuwendenden Überlagerungswerte von $-d$ bis $d$ zu sehen. Auf der $y$-Achse sind die Originalwert abgetragen. In der jeweiligen Zelle sind die einzelnen Übergangswahrscheinlichkeiten abzulesen. Für Originalwerte  grö\ss er $7$ ist die Zeile für Originalwerte gleich $7$ ma\ss gebend.
+Es ist hierbei anzumerken, dass direkt eine symmetrische Verteilung für die Überlagerungsbeiträge gewählt wurde. Auf der $x$-Achse sind die anzuwendenden Überlagerungswerte von $-d$ bis $d$ zu sehen. Auf der $y$-Achse sind die Originalwerte abgetragen. In der jeweiligen Zelle sind die einzelnen Übergangswahrscheinlichkeiten abzulesen. Für Originalwerte  grö\ss er $7$ ist die Zeile für Originalwerte gleich $7$ ma\ss gebend. Die Überlagerungsmatrix bildet den Kern der CKM. Ihre Anwendung wird im nächsten Abschnitt beschrieben.
 
 
 \subsection{Methodik und Verfahrensdurchführung}%
@@ -201,13 +201,45 @@ Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zei
 
 \subsubsection{Lookup-Modul}
 
-Im Anschluss an die Bestimmung der Originalwerte und der dazugehörigen Cell-Keys gilt es nun die Überlagerungen zu berechnen. Für die Bestimmung eines Überlagerungswertes dient das Paar $(Originalwert, CellKey)$ als Input. Damit meint man den Wert einer einzelnen Tabellenzelle und den über dieselbe Operation $f$ berechneteten Cell-Key. Das Lookup Modul stellt die Funktionalität bereit, anhand dieses Wertepaares den zugehörigen Überlagerungswert aus der Überlagerungsmatrix abzulesen. 
+Im Anschluss an die Bestimmung der Originalwerte und der dazugehörigen Cell-Keys gilt es nun die Überlagerungen zu berechnen. Für die Bestimmung eines Überlagerungswertes dient das Paar $(Originalwert, \; CellKey)$ als Input. Damit meint man den Wert einer einzelnen Tabellenzelle und den über dieselbe Operation $f$ berechneteten Cell-Key. Das Lookup Modul stellt die Funktionalität bereit, anhand dieses Wertepaares den zugehörigen Überlagerungswert aus der Überlagerungsmatrix abzulesen. Um dies weiter zu illustrieren wird die Überlagerungsmatrix aus Abbildung \ref{matrix_plot} herangezogen. Betrachtet man Zeile 5 aus Tabelle \ref{tab_agg}, so liegt das Paar $(Originalwert = 3, \; CellKey = 0,853099)$ vor. Um nun auch den dazu passenden Überlagerungswert zu bestimmen, wählt man die Zeile $i$ der Überlagerungsmatrix, die dem $Originalwert$ - hier also $3$ - entspricht. Anschlie\ss end bestimmt man mit Hilfe des $CellKey$ die Spalte $j$, für welche der Wert in der Matirx erstmalig kleiner als $CellKey$ ist. In diesem Fall führt dies zu $j = 1$, da $0,853099 < 0.86$. Der Wert $j = 1$ ist damit der zu addierende Überlagerungswert. Daraus ergibt sich ein finaler Wert von $3 + 1 = 4$. Wendet man dieses Vorgehen vollständig auf das Beispiel aus Tabelle \ref{tab_agg} an, so ergeben sich die finalen und damit geheimgehaltenen Werte aus Tabelle \ref{tab_final}.
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r r r}
+        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschl.} & \textbf{Fallzahl} & \textbf{Überlagerung} & \textbf{Finaler Wert} \\ 
+        \hline
+        $1$ \vline & Bamberg & m & $1$ & $-1$ & $0$ \\
+        $2$ \vline & Einchstätt & w & $1$ & $-1$ & $0$ \\
+        $3$ \vline & München & m & $3$ & $-3$ & $0$ \\
+        $4$ \vline & München & w & $2$ & $1$ & $3$ \\
+        $5$ \vline & Würzburg & m & $3$ & $1$ & $4$
+    \end{tabular}
+    \caption{Überlagerungen und final geheimgehaltene Werte}
+    \label{tab_final}
+\end{table}
+
+In Anhang A ist eine \textit{Python} Realisierung dieses Verfahrens zu finden.
 
 
 \subsection{Besonderheiten der Cell Key Methode}%
 
-Test
+Ein Besonderheit, die sich aus der Verwendung der Cell Key Methode ergibt, ist die Nicht-Additivität des Verfahrens. Dadruch, dass Rand- und Zwischensummen nicht erst nach der Geheimhaltung, sondern ebenfalls während der Tabellierung gebildet werden, unterliegen auch diese Werte dem Geheimhaltungsmechanismus. Um dies zu veranschaulichen soll abschlie\ss end ein weiteres Fallbeispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_additivity} zeigt für eine Universit jeweils eine Insgesamt-Position \textit{i} sowie die Unterteilung nach dem Geschlecht \textit{m} und \textit{w}. Es sind sowohl die Originalwerte als auch die final überlagerten Werte abgebildet. Auch die Positionen für die Zwischensummen \textit{i} wurden mit der Tabellierungs-Operation $f$ auf Basis der Originalwerte und der Record-Keys gebildet. Damit entsteht also ein eigner Cell-Key und Überlagerungswert für diese Zahlen. Für das Beispiel der Universit Bamberg aus Tabelle \ref{tab_additivity} sieht man schnell, dass für die Originalwerte die gewohnte Additivität vorhanden ist, denn $166 = 75 + 91$. Führt man diese Betrachtung allerdings auf den überlagerten Werten durch, so erhält man eine falsche Aussage, denn $168 \neq 75 + 91$. Diese Phänomän bezeichnet man als \textit{Nicht-Additivität} einer statistischen Tabelle.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{ r r r r r}
+        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschl.} & \textbf{orig. Fallzahl} & \textbf{überl. Fallzahl} \\ 
+        \hline
+        $1$ \vline & Bamberg & i & $166$ & $168$ \\
+        $2$ \vline & Bamberg & m & $75$ & $75$ \\
+        $3$ \vline & Bamberg & w & $91$ & $91$ \\
+        $4$ \vline & Einchstätt & i & $46$ & $48$ \\
+        $5$ \vline & Einchstätt & m & $17$ & $20$ \\
+        $6$ \vline & Einchstätt & w & $32$ & $29$
+    \end{tabular}
+    \caption{Beispiel zur Nicht-Additivität der CKM}
+    \label{tab_additivity}
+\end{table}
 
 \subsection{Aufdeckungsrisiko}
 
