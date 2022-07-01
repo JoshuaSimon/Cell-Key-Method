@@ -58,7 +58,7 @@ Weiter differenziert man Geheimhaltungsverfahren auch nach dem Zeitpunkt ihrer D
 
 \subsection{Statistische Tabellen}
 
-Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Gro\ss teil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Ma\ss gebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen}. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universität. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
+Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Gro\ss teil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Ma\ss gebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen}. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universitätät. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
 
 \begin{table}[h]
     \centering
@@ -163,10 +163,10 @@ Für die Bestimmung des Cell-Keys wird jedem Mikrodatensatz zunächst eine gleic
 \begin{table}[h]
     \centering
     \begin{tabular}{ r r r r }
-        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschlecht} & \textbf{Record-Key} \\ 
+        \textbf{ID} \vline & \textbf{Universitätät} & \textbf{Geschlecht} & \textbf{Record-Key} \\ 
         \hline
         $1$ \vline & Würzburg & m & $0,611853$ \\
-        $2$ \vline & Einchstätt & w & $0,139494$ \\
+        $2$ \vline & Eichstätt & w & $0,139494$ \\
         $3$ \vline & München & w & $0,292145$ \\
         $4$ \vline & München & m & $0,366362$ \\
         $5$ \vline & Würzburg & m & $0,456070$ \\
@@ -180,15 +180,15 @@ Für die Bestimmung des Cell-Keys wird jedem Mikrodatensatz zunächst eine gleic
     \label{tab_mikrodaten}
 \end{table}
 
-Tabelle \ref{tab_agg} stellt die Daten nach Durchführung der Tabellierung $f$ dar. Die Daten wurden hier nach der Universität und nach dem Geschlecht zusammengefasst. Die entsprechenden Fallzahlen, Record-Key-Summen und Cell-Keys werden abgebildet. 
+Tabelle \ref{tab_agg} stellt die Daten nach Durchführung der Tabellierung $f$ dar. Die Daten wurden hier nach der Universitätät und nach dem Geschlecht zusammengefasst. Die entsprechenden Fallzahlen, Record-Key-Summen und Cell-Keys werden abgebildet. 
 
 \begin{table}[h]
     \centering
     \begin{tabular}{ r r r r r r}
-        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschlecht} & \textbf{Fallzahl} & \textbf{Record-Key-Summe} & \textbf{Cell-Key} \\ 
+        \textbf{ID} \vline & \textbf{Universitätät} & \textbf{Geschl.} & \textbf{Fallzahl} & \textbf{Record-Key-Summe} & \textbf{Cell-Key} \\ 
         \hline
         $1$ \vline & Bamberg & m & $1$ & $0,199674$ & $0,199674$ \\
-        $2$ \vline & Einchstätt & w & $1$ & $0,139494$ & $0,139494$ \\
+        $2$ \vline & Eichstätt & w & $1$ & $0,139494$ & $0,139494$ \\
         $3$ \vline & München & m & $3$ & $1,005227$ & $0,005227$ \\
         $4$ \vline & München & w & $2$ & $0,806379$ & $0,806379$ \\
         $5$ \vline & Würzburg & m & $3$ & $1,853099$ & $0,853099$
@@ -197,7 +197,7 @@ Tabelle \ref{tab_agg} stellt die Daten nach Durchführung der Tabellierung $f$ d
     \label{tab_agg}
 \end{table}
 
-Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zeilen in Tabelle \ref{tab_mikrodaten}, in denen $Universit\ddot{a}t = W\ddot{u}rzburg \: \wedge \: Geschlecht = m$. Die Record-Key-Summe in dieser Zeile ergibt sich nach $0,611853 + 0,456070 + 0,785176 = 1,853099$. Der daraus abgeleitete Cell-Key beträgt damit $0,853099$.
+Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zeilen in Tabelle \ref{tab_mikrodaten}, in denen $Universität\ddot{a}t = W\ddot{u}rzburg \: \wedge \: Geschlecht = m$. Die Record-Key-Summe in dieser Zeile ergibt sich nach $0,611853 + 0,456070 + 0,785176 = 1,853099$. Der daraus abgeleitete Cell-Key beträgt damit $0,853099$.
 
 \subsubsection{Lookup-Modul}
 
@@ -206,10 +206,10 @@ Im Anschluss an die Bestimmung der Originalwerte und der dazugehörigen Cell-Key
 \begin{table}[h]
     \centering
     \begin{tabular}{ r r r r r r}
-        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschl.} & \textbf{Fallzahl} & \textbf{Überlagerung} & \textbf{Finaler Wert} \\ 
+        \textbf{ID} \vline & \textbf{Universitätät} & \textbf{Geschl.} & \textbf{Fallzahl} & \textbf{Überlagerung} & \textbf{Finaler Wert} \\ 
         \hline
         $1$ \vline & Bamberg & m & $1$ & $-1$ & $0$ \\
-        $2$ \vline & Einchstätt & w & $1$ & $-1$ & $0$ \\
+        $2$ \vline & Eichstätt & w & $1$ & $-1$ & $0$ \\
         $3$ \vline & München & m & $3$ & $-3$ & $0$ \\
         $4$ \vline & München & w & $2$ & $1$ & $3$ \\
         $5$ \vline & Würzburg & m & $3$ & $1$ & $4$
@@ -223,23 +223,25 @@ In Anhang A ist eine \textit{Python} Realisierung dieses Verfahrens zu finden.
 
 \subsection{Besonderheiten der Cell Key Methode}%
 
-Ein Besonderheit, die sich aus der Verwendung der Cell Key Methode ergibt, ist die Nicht-Additivität des Verfahrens. Dadruch, dass Rand- und Zwischensummen nicht erst nach der Geheimhaltung, sondern ebenfalls während der Tabellierung gebildet werden, unterliegen auch diese Werte dem Geheimhaltungsmechanismus. Um dies zu veranschaulichen soll abschlie\ss end ein weiteres Fallbeispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_additivity} zeigt für eine Universit jeweils eine Insgesamt-Position \textit{i} sowie die Unterteilung nach dem Geschlecht \textit{m} und \textit{w}. Es sind sowohl die Originalwerte als auch die final überlagerten Werte abgebildet. Auch die Positionen für die Zwischensummen \textit{i} wurden mit der Tabellierungs-Operation $f$ auf Basis der Originalwerte und der Record-Keys gebildet. Damit entsteht also ein eigner Cell-Key und Überlagerungswert für diese Zahlen. Für das Beispiel der Universit Bamberg aus Tabelle \ref{tab_additivity} sieht man schnell, dass für die Originalwerte die gewohnte Additivität vorhanden ist, denn $166 = 75 + 91$. Führt man diese Betrachtung allerdings auf den überlagerten Werten durch, so erhält man eine falsche Aussage, denn $168 \neq 75 + 91$. Diese Phänomän bezeichnet man als \textit{Nicht-Additivität} einer statistischen Tabelle.
+Eine Besonderheit, die sich aus der Verwendung der Cell Key Methode ergibt, ist die Nicht-Additivität des Verfahrens. Dadruch, dass Rand- und Zwischensummen nicht erst nach der Geheimhaltung, sondern ebenfalls während der Tabellierung gebildet werden, unterliegen auch diese Werte dem Geheimhaltungsmechanismus. Um dies zu veranschaulichen soll abschlie\ss end ein weiteres Fallbeispiel aus der Hochschulstatistik betrachtet werden. Tabelle \ref{tab_additivity} zeigt für eine Universitätät jeweils eine Insgesamt-Position \textit{i} sowie die Unterteilung nach dem Geschlecht \textit{m} und \textit{w}. Es sind sowohl die Originalwerte als auch die final überlagerten Werte abgebildet. Auch die Positionen für die Zwischensummen \textit{i} wurden mit der Tabellierungs-Operation $f$ auf Basis der Originalwerte und der Record-Keys gebildet. Damit entsteht also ein eigner Cell-Key und Überlagerungswert für diese Zahlen. Für das Beispiel der Universität Bamberg aus Tabelle \ref{tab_additivity} sieht man schnell, dass für die Originalwerte die gewohnte Additivität vorhanden ist, denn $166 = 75 + 91$. Führt man diese Betrachtung allerdings auf den überlagerten Werten durch, so erhält man eine falsche Aussage, denn $168 \neq 75 + 91$. Diese Phänomen bezeichnet man als \textit{Nicht-Additivität} einer statistischen Tabelle.
 
 \begin{table}[h]
     \centering
     \begin{tabular}{ r r r r r}
-        \textbf{ID} \vline & \textbf{Universität} & \textbf{Geschl.} & \textbf{orig. Fallzahl} & \textbf{überl. Fallzahl} \\ 
+        \textbf{ID} \vline & \textbf{Universitätät} & \textbf{Geschl.} & \textbf{orig. Fallzahl} & \textbf{überl. Fallzahl} \\ 
         \hline
         $1$ \vline & Bamberg & i & $166$ & $168$ \\
         $2$ \vline & Bamberg & m & $75$ & $75$ \\
         $3$ \vline & Bamberg & w & $91$ & $91$ \\
-        $4$ \vline & Einchstätt & i & $46$ & $48$ \\
-        $5$ \vline & Einchstätt & m & $17$ & $20$ \\
-        $6$ \vline & Einchstätt & w & $32$ & $29$
+        $4$ \vline & Eichstätt & i & $46$ & $48$ \\
+        $5$ \vline & Eichstätt & m & $17$ & $20$ \\
+        $6$ \vline & Eichstätt & w & $32$ & $29$
     \end{tabular}
     \caption{Beispiel zur Nicht-Additivität der CKM}
     \label{tab_additivity}
 \end{table}
+
+Diese Nicht-Additivität wird beim Cell Key Verfahren in Kauf genommen, da im Weiteren zwei konkrete Vorteile dieser Methode überwiegen. Das unabhängige und separate Überlagern von Tabellenfeldern führt zu zwei wichtigen Vorteilen dieses Geheimhaltungsverfahrens [\cite{Enderle}]. Zum einen wird eine \textit{tabellenübergreifenede Konsistenz} erreicht. Die zu addierenden Überlagerungswerte zu einem bestimmten Originalwert (z.B. Studierende der Universitätät Bamberg) sind bei gleicher Datengrundlage immer identisch - unabhängig von der Zieltabelle. Dies ergibt sich aus den einmalig zugespielten Record-Keys und dem danach folgenden deterministeischen Lookup-Modul. Der zweite überwiegende Vorteil der CKM ist die \textit{Genauigkeit} des Verfahrens [\cite{Enderle}]. Dieser Punkt beschreibt die Vermeidung von zufällig gleichgerichteten Überlagerungen. Dies würde im Einzelfall zu grö\ss eren Veränderungen zwischen Original- und geheimgehaltenen Wert führen. Durch die Überlagerung aller Tabellenzellen umgeht man diese Gefahr.
 
 \subsection{Aufdeckungsrisiko}
 
