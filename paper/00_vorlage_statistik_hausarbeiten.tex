@@ -58,7 +58,7 @@ Weiter differenziert man Geheimhaltungsverfahren auch nach dem Zeitpunkt ihrer D
 
 \subsection{Statistische Tabellen}
 
-Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Gro\ss teil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Ma\ss gebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen} [\cite{Nickl}]. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universitätät. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
+Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar. Ein Gro\ss teil der Veröffentlichungen der amtlichen Statistik sind selbst - oder beinhalten - statistische Tabellen, welche aus den amtlichen Daten abgeleitet werden. Ma\ss gebend für die Anwendung eines Geheimhaltungsverfahrens ist die Art der zu veröffentlichenden Tabelle, die vorliegt. Man unterscheidet im allgemeinen zwischen \textit{Häufigkeitstabllen} und \textit{Wertetabellen} [\cite{Nickl}]. Erstere stellen Häufigkeiten oder Fallzahlen dar, z.B. die Anzahl von Frauen und Männern innerhalb einer Universitätät. Wertetabellen hingegen stellen Wertesummen wie Umsätze dar. Demnach sind sie häufig in Wirtschaftsstatistiken anzutreffen [\cite{Rothe-2}]. Diese unterschiedlichen Kontexte, in denen die Zahlen dieser Tabellen interpretiert werden können, fordern eine natürliche Unterscheidung innerhalb der Geheimhaltung. Es folgen zwei einfache Beispiel für diese Tabellentypen mit rein fiktiven Ausprägungen.
 
 \begin{table}[h]
     \centering
@@ -88,7 +88,17 @@ Gegenstand der Geheimhaltung stellen in dieser Arbeit statistische Tabellen dar.
 
 \subsection{Bewährte Ansätze}
 
-Nachdem nun die grundlegenden Begriffe im Zusammenhang mit der Geheimhaltung von statistischen Tabellen erläutert wurden, beschäftigt sich dieser Abschnitt mit bewährten Ansätzen um diese Geheimhaltung durchzuführen.
+Nachdem nun die grundlegenden Begriffe im Zusammenhang mit der Geheimhaltung von statistischen Tabellen erläutert wurden, beschäftigt sich dieser Abschnitt mit bewährten Ansätzen um diese Geheimhaltung durchzuführen. Dabei wird speziell auf die post-tabularen Verfahren für Häufigkeits- und Wertetabelle eingangen.
+
+Am Anfangs eines jeden Geheimhaltungsverfahrens stehen die sog. \textit{Geheimhaltungsregel}, die eine Identifizierung kritischer Fälle erlauben. Eine Standardansatz in der amtlichen Statistik stellt hier die \textit{Mindestfallzahlregel} [\cite{Rothe-1}] dar. Diese Regel lässt sich auf Häufigkeitstabelle anwenden, indem die kritischen Fälle mit einem zuvor festgelegten Wert $n$ verglichen werden. Meist wird hier $n = 3$ gewählt [\cite{Rothe-1}]. Ist der betrachtete Tabellenwert kleiner als der Wert $n$, so ist dieser Tabellenwert geheimzuhalten. Für Wertetabellen hingegen lässt sich beispielsweise die \textit{p-\% Regel} anwenden [\cite{Rothe-2}]. Dieser Ansatz besagt, dass ein Tabellenwert $x$ geheimzuhalten ist, wenn 
+
+\begin{align}
+    x - x_2 - x_1 < \frac{p}{100} \cdot x_1
+\end{align}
+
+gilt [\cite{Rothe-2}]. Wobei in $(1)$ $x_1$ der grö\ss te und $x_2$ der zweitgrö\ss te Beitrag ist. In anderen Worten lässt sich sagen, dass der Tabellenwert $x$ genau dann geheimzuhalten ist, wenn die Differenz zwischen $x$ und $x1_1$, $x_2$ nicht mindestens $p\%$ vom grö\ss ten Beitrag $x_1$ beträgt.
+
+Um letztlich auch die Geheimhaltung durchzuführen wird unter diesen Regeln oft auf das Verfahren der \textit{Zellsperrung} zurückgegriffen [\cite{Rothe-1}].
 
 
 
@@ -118,7 +128,7 @@ Gestand des Interesses sind demnach Zufallsfunktionen $z$, die eine bedingte Wah
     & \sum_{i = -d}^{d} p_i = 1
 \end{align}
 
-schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile $(3)$ noch gefordert, dass die Summe der Übergangswahrscheinlichkeiten für einen Originalwert gleich $1$ ist. Die Lösung dieses Problems lässt sich in Matrixform notieren. Man spricht hier von der sog. Überlagerungsmatrix mit Zeilen $i$ und Spalten $j$, welche zur Bestimmung der Überlagerungsbeiträge $j$ zu den Originalwerten $i$ verwendet werden kann. Für weitere mathematische Details und Lösungsansätze sei an dieser Stelle auf [\cite{Giessing}] verwiesen. In [\cite{Höhne}] wird die Lösung eines solchen Gleichungssystems für die Verfahrensparamter $p_0 = 0,5 = 50\%$, $d = 4$ und $s = 2,25$ gezeigt. Diese Überlagerungsmatrix ist in Abbildung \ref{matrix_plot} in Form einer Heatmap zu sehen. Der \textit{Python} Code zum Erstellen dieser Grafik ist in Anhang A zu finden.
+schreiben [\cite{Höhne}]. Dabei wird in der letzten Zeile $(4)$ noch gefordert, dass die Summe der Übergangswahrscheinlichkeiten für einen Originalwert gleich $1$ ist. Die Lösung dieses Problems lässt sich in Matrixform notieren. Man spricht hier von der sog. Überlagerungsmatrix mit Zeilen $i$ und Spalten $j$, welche zur Bestimmung der Überlagerungsbeiträge $j$ zu den Originalwerten $i$ verwendet werden kann. Für weitere mathematische Details und Lösungsansätze sei an dieser Stelle auf [\cite{Giessing}] verwiesen. In [\cite{Höhne}] wird die Lösung eines solchen Gleichungssystems für die Verfahrensparamter $p_0 = 0,5 = 50\%$, $d = 4$ und $s = 2,25$ gezeigt. Diese Überlagerungsmatrix ist in Abbildung \ref{matrix_plot} in Form einer Heatmap zu sehen. Der \textit{Python} Code zum Erstellen dieser Grafik ist in Anhang A zu finden.
 
 \begin{figure}[H]
     \begin{center}
@@ -257,7 +267,7 @@ Diese Nicht-Additivität wird beim Cell Key Verfahren in Kauf genommen, da im We
 %\newpage
 \section{Zusammenfassung und Fazit}
 
-Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben Pflichten nachkommen kann, sind die unterschiedlichsten Technologien und Verfahren notwendig. Neben dem Erheben der Daten bei den Meldern, gehören auch die Plausibilisierung und die Aufbereitung der Daten zu seinen Aufgaben. Um eine so große Datenmenge effizient zu verarbeiten, wird auf moderne Lösungen aus der Informationstechnologie zurückgriffen. Hierzu zählen verschiedene Skriptsprachen, Datenbanken und Datawarehouses. Um die Qualität der Daten zu wahren, sind neben rein technischer Kontrollen auch sehr fachliche Zusammenhänge zu prüfen und ggf. zu korrigieren. Dies erfordert ein tiefes inhaltliches Verständnis der Daten und ihrer Merkmale. Eine gewisse Interpretation und Analyse sind also auch im Data Engineering notwendig, um die Datenqualität und den Datenfluss zu erhalten, sowie die Daten zu publizieren und damit die Pflicht der amtlichen Statistik zu erfüllen. 
+Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben Pflichten nachkommen kann, sind die unterschiedlichsten Technologien und Verfahren notwendig. Neben dem Erheben der Daten bei den Meldern, gehören auch die Plausibilisierung und die Aufbereitung der Daten zu seinen Aufgaben. Um eine so große Datenmenge effizient zu verarbeiten, wird auf moderne Lösungen aus der Informationstechnologie zurückgegriffen. Hierzu zählen verschiedene Skriptsprachen, Datenbanken und Datawarehouses. Um die Qualität der Daten zu wahren, sind neben rein technischer Kontrollen auch sehr fachliche Zusammenhänge zu prüfen und ggf. zu korrigieren. Dies erfordert ein tiefes inhaltliches Verständnis der Daten und ihrer Merkmale. Eine gewisse Interpretation und Analyse sind also auch im Data Engineering notwendig, um die Datenqualität und den Datenfluss zu erhalten, sowie die Daten zu publizieren und damit die Pflicht der amtlichen Statistik zu erfüllen. 
 
 \newpage%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
