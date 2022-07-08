@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 # "Die Cell-Key-Methode – ein Geheimhaltungsverfahren" 
 # by Jörg Höhne und Julia Höninger.
 OVERLAY_MATRIX = np.matrix([
-    [0, 0, 0, 0, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0.6875, 0.6875, 0.6875, 0.9375, 1, 1],
     [0, 0, 0.3533, 0.3533, 0.3533, 0.9440, 0.9970, 0.9990, 1],
     [0, 0.1620, 0.1620, 0.1620, 0.6620, 0.8560, 0.9970, 0.9990, 1],
