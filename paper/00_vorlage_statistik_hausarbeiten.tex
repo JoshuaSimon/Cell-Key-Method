@@ -96,9 +96,9 @@ Am Anfangs eines jeden Geheimhaltungsverfahrens stehen die sog. \textit{Geheimha
     x - x_2 - x_1 < \frac{p}{100} \cdot x_1
 \end{align}
 
-gilt [\cite{Rothe-2}]. Wobei in $(1)$ $x_1$ der grö\ss te und $x_2$ der zweitgrö\ss te Beitrag ist. In anderen Worten lässt sich sagen, dass der Tabellenwert $x$ genau dann geheimzuhalten ist, wenn die Differenz zwischen $x$ und $x1_1$, $x_2$ nicht mindestens $p\%$ vom grö\ss ten Beitrag $x_1$ beträgt.
+gilt [\cite{Rothe-2}]. Wobei in $(1)$ $x_1$ der grö\ss te und $x_2$ der zweitgrö\ss te Beitrag ist. In anderen Worten lässt sich sagen, dass der Tabellenwert $x$ genau dann geheimzuhalten ist, wenn die Differenz zwischen $x$ und $x_1$, $x_2$ nicht mindestens $p\%$ vom grö\ss ten Beitrag $x_1$ beträgt.
 
-Um letztlich auch die Geheimhaltung durchzuführen wird unter diesen Regeln oft auf das Verfahren der \textit{Zellsperrung} zurückgegriffen [\cite{Rothe-1}].
+Um letztlich auch die Geheimhaltung durchzuführen wird unter diesen Regeln oft auf das Verfahren der \textit{Zellsperrung} zurückgegriffen [\cite{Rothe-1}]. Hierbei werden die in einem ersten Schritt mit der Geheimhaltungsregel identifizierten Fälle durch einen Punkt $\cdot$ ersetzt. Bei dieser Sperrung der kritischen Werte spricht man von der \textit{Primärsperrung}. Um aber auch Rückrechnungen unter Zuhilfenahme von Rand- oder Zwischensummen zu verhindern, wird eine \textit{Sekundärsperrung} angewandt. Diese sperrt neben dem bereits durch die Primärsperrung unkenntlichen gemachten Zellwerts auch jeweils eine Zellwert in derselben Zeile, in derselben Spalte sowie dasjenige Tabellenfeld, in dem die Zeile und die Spalte der beiden zuvor genannten Felder aufeinander treffen [\cite{Rothe-1}]. Es wird schnell klar, das unter Anwendung dieses Verfahres ein hoher Informationsverlust im Gunste der Geheimhaltung entstehen kann. Um dieses Verlust möglichst gering zu halten, sollten eher Tabelleninnenfelder und keine Summenfelder gesperrt werden [\cite{Rothe-1}]. Die Zellsperrung stellt nach Anwendung ein sicheres Verfahren dar, welches allerdings durch die oftmals mit hohem manuellen Aufwand verundenen Sekundärsperrung eher unfelxibel ist. Für ein anschauliches Beispiel sei an dieser Stelle auf [\cite{Rothe-1}] verwiesen.
 
 
 
@@ -212,7 +212,7 @@ Tabelle \ref{tab_agg} stellt die Daten nach Durchführung der Tabellierung $f$ d
     \label{tab_agg}
 \end{table}
 
-Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zeilen in Tabelle \ref{tab_mikrodaten}, in denen $Universität\ddot{a}t = W\ddot{u}rzburg \: \wedge \: Geschlecht = m$. Die Record-Key-Summe in dieser Zeile ergibt sich nach $0,611853 + 0,456070 + 0,785176 = 1,853099$. Der daraus abgeleitete Cell-Key beträgt damit $0,853099$.
+Die Werte in Zeile 5 von Tablle \ref{tab_agg} ergeben sich durch Zählen der Zeilen in Tabelle \ref{tab_mikrodaten}, in denen $Universit\ddot{a}t = W\ddot{u}rzburg \: \wedge \: Geschlecht = m$. Die Record-Key-Summe in dieser Zeile ergibt sich nach $0,611853 + 0,456070 + 0,785176 = 1,853099$. Der daraus abgeleitete Cell-Key beträgt damit $0,853099$.
 
 \subsubsection{Lookup-Modul}
 
@@ -280,7 +280,7 @@ Damit das Bayerische Landesamt für Statistik seiner gesetzlich vorgeschrieben P
 \appendix
 \section{Python Implementierung}
 
-Nachfolgend ist die vollständige \textit{Python} Implementierung des CKM Verfahrens für ein Testbeispiel aus der Hochschulstatistik abgebildet.
+Nachfolgend ist die vollständige \textit{Python} Implementierung des CKM Verfahrens für ein Testbeispiel aus der Hochschulstatistik abgebildet. Für die Werte der Überlagerungsmatrix wurde auf die Literatur zurückgegriffen.
 
 \lstinputlisting[language=Python, caption=CKM Python Beispiel]{../src/ckm.py}
 
