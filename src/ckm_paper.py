@@ -50,7 +50,7 @@ def generate_data(n, seed) -> pd.DataFrame:
 
     return pd.DataFrame(
         list(zip(uni_data, sex_data, record_key_data)),
-        columns =['university', 'sex', 'record_key']
+        columns =["university", "sex", "record_key"]
     )
 
 
