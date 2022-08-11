@@ -143,7 +143,12 @@ def apply_ckm(data, matrix, vector, value_col_names, record_key_names, seed, p) 
 if __name__ == "__main__":
     data = generate_data(1001, 42)
     table_data = tabulate_data(data)
-    overlayed_data = apply_ckm(table_data, OVERLAY_MATRIX, CHANGE_VECTOR, ["count"], ["record_key_sum"], seed=42, p=[0])
+    overlayed_data = apply_ckm(
+        table_data,
+        OVERLAY_MATRIX,
+        CHANGE_VECTOR,
+        ["count"], ["record_key_sum"],
+        seed=42, p=[0])
 
     # Erstellen der Hearmap.
     matrix_plot(OVERLAY_MATRIX, CHANGE_VECTOR)
